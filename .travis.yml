@@ -16,7 +16,7 @@ after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   travis/styler.sh
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && Rscript
-  -e 'Sys.sleep(30);install.packages("org",repos="https://raubreywhite.github.io/drat/");pkgdown::build_site()'
+  -e 'Sys.sleep(30);install.packages("fhiplot",repos="https://folkehelseinstituttet.github.io/drat/");pkgdown::build_site()'
 deploy:
   provider: pages
   skip-cleanup: true
