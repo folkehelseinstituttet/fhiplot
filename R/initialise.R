@@ -36,7 +36,8 @@ AllowFileManipulationFromInitialiseProject <- function() {
 #' @param HOME The folder containing 'Run.R' and 'code/'
 #' @param SHARED A folder inside `SHARED` with today's date will be created and it will be accessible via `org::PROJ$SHARED_TODAY` (this is where you will store all of your results)
 #' @param ... Other folders that you would like to reference
-#' @examples \dontrun{
+#' @examples
+#' \dontrun{
 #' org::AllowFileManipulationFromInitialiseProject()
 #' org::InitialiseProject(
 #'   HOME = "/git/analyses/2019/analysis3/",
@@ -53,7 +54,7 @@ InitialiseProject <- function(HOME = NULL,
   PROJ$HOME <- HOME
   PROJ$SHARED <- SHARED
 
-  today <- format.Date(Sys.time(),"%Y-%m-%d")
+  today <- format.Date(Sys.time(), "%Y-%m-%d")
 
   arguments <- list(...)
   for (i in seq_along(arguments)) {
