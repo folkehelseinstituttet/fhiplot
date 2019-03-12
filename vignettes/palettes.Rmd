@@ -1,8 +1,11 @@
 ---
 title: "Palettes"
-author: "Vignette Author"
+author: "Author"
 date: "`r Sys.Date()`"
-output: rmarkdown::html_vignette
+output:
+  rmarkdown::html_vignette:
+    fig_width: 6
+    fig_height: 6
 vignette: >
   %\VignetteIndexEntry{Palettes}
   %\VignetteEngine{knitr::rmarkdown}
@@ -21,22 +24,75 @@ library(ggplot2)
 library(fhiplot)
 ```
 
-## Figures
+## Palette
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
+```{r}
+fhiplot::Display_All_Palettes()
+```
 
-```{r, fig.show='hold'}
-df <- data.frame(
-  gp = factor(rep(letters[1:3], each = 10)),
-  y = rnorm(30)
-)
-ds <- plyr::ddply(df, "gp", plyr::summarise, mean = mean(y), sd = sd(y))
 
-# The summary data frame ds is used to plot larger red points on top
-# of the raw data. Note that we don't need to supply `data` or `mapping`
-# in each layer because the defaults from ggplot() are used.
-ggplot(df, aes(gp, y)) +
-  geom_point() +
-  geom_point(data = ds, aes(y = mean), colour = 'red', size = 3)
+## Points
+
+We first try some scattergraphs with two different themes:
+
+- White "classic" background
+- Grey standard ggplot2 background
+
+```{r}
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+    geom_point(size = 4) +
+    theme_classic()+
+    fhiplot::scale_color_fhi(palette = "dis_primary")
+
+ggplot(iris, aes(Sepal.Width, Sepal.Length, color = Species)) +
+    geom_point(size = 4) +
+    fhiplot::scale_color_fhi(palette = "dis_primary")
+
+```
+
+## Barcharts
+
+We first try some barcharts with the `dis_primary` palette and two different themes:
+
+- White "classic" background
+- Grey standard ggplot2 background
+
+```{r}
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  theme_classic()+
+  geom_bar() +
+  fhiplot::scale_fill_fhi(palette = "dis_primary")
+
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  geom_bar() +
+  fhiplot::scale_fill_fhi(palette = "dis_primary")
+
+```
+
+We now try the `div_blue_red` palette:
+
+```{r}
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  theme_classic()+
+  geom_bar() +
+  fhiplot::scale_fill_fhi(palette = "div_blue_red", direction = -1)
+
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  geom_bar() +
+  fhiplot::scale_fill_fhi(palette = "div_blue_red", direction = -1)
+
+```
+
+We now try the `div_blue_red` palette with transparency set to `0.7`:
+
+```{r}
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  theme_classic()+
+  geom_bar(alpha=0.7) +
+  fhiplot::scale_fill_fhi(palette = "div_blue_red", direction = -1)
+
+ggplot(diamonds, aes(x=color, fill = cut)) +
+  geom_bar(alpha=0.7) +
+  fhiplot::scale_fill_fhi(palette = "div_blue_red", direction = -1)
 ```
 
