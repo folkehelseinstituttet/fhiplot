@@ -11,7 +11,9 @@ fhi_pal <- function(palette = "dis_primary", direction = 1) {
     if (n > length(pal_names)) stop(glue::glue("Max {length(pal_names)} levels allowed for {palette}"))
 
     pal <- vals$pals[[glue::glue("{palette}_{n}")]]
-    if (direction == -1) pal <- rev(pal)
+    if (direction == -1){
+      pal <- rev(pal)
+    }
 
     retval <- pal[1:n]
     names(retval) <- NULL

@@ -36,8 +36,24 @@ fhiplot::Display_All_Palettes()
 pd <- fhidata::get_data("norway_map_counties")
 data <- unique(pd[,c("location_code")])
 suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)])
+data[,category_with_missing:=category]
+data[1,category_with_missing:="Missing"]
 data[,category:=factor(category,levels=c("Good","Normal","Neutral","Bad","Very Bad"))]
+data[,category_with_missing:=factor(category_with_missing,levels=c("Good","Normal","Neutral","Bad","Very Bad","Missing"))]
 pd[data,on="location_code",category:=category]
+pd[data,on="location_code",category_with_missing:=category_with_missing]
+```
+
+Here we have a sequential map:
+
+```{r}
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black", size=0.25)
+q <- q + coord_quickmap()
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_complete", direction = 1)
+q <- q + labs(title="Palette: 'map_seq_complete'")
+q <- q + theme_void()
+q
 ```
 
 Here we have a diverging map:
@@ -46,21 +62,32 @@ Here we have a diverging map:
 q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black", size=0.25)
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div", direction = 1)
-q <- q + labs(title="Palette: 'map_div'")
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_complete", direction = 1)
+q <- q + labs(title="Palette: 'map_div_complete'")
 q <- q + theme_void()
 q
 ```
 
-
-Here we have a sequential map:
+Here we have a sequential map with missing:
 
 ```{r}
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black", size=0.25)
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.25)
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq", direction = 1)
-q <- q + labs(title="Palette: 'map_seq'")
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing", direction = 1)
+q <- q + labs(title="Palette: 'map_seq_missing'")
+q <- q + theme_void()
+q
+```
+
+Here we have a diverging map with missing:
+
+```{r}
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.25)
+q <- q + coord_quickmap()
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_missing", direction = 1)
+q <- q + labs(title="Palette: 'map_div_missing'")
 q <- q + theme_void()
 q
 ```

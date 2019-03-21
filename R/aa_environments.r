@@ -46,43 +46,84 @@ vals$cols$map_divergent <- c(
 
 vals$pals <- list()
 
-vals$pals$map_seq_1 <- vals$cols$map_sequential[1]
-vals$pals$map_seq_2 <- vals$cols$map_sequential[c(1, 5)]
-vals$pals$map_seq_3 <- vals$cols$map_sequential[c(1, 3, 5)]
-vals$pals$map_seq_4 <- vals$cols$map_sequential[c(1, 2, 4, 5)]
-vals$pals$map_seq_5 <- vals$cols$map_sequential[c(1, 2, 3, 4, 5)]
+vals$pals$map_seq_complete_1 <- vals$cols$map_sequential[1]
+vals$pals$map_seq_complete_2 <- vals$cols$map_sequential[c(1, 5)]
+vals$pals$map_seq_complete_3 <- vals$cols$map_sequential[c(1, 3, 5)]
+vals$pals$map_seq_complete_4 <- vals$cols$map_sequential[c(1, 2, 4, 5)]
+vals$pals$map_seq_complete_5 <- vals$cols$map_sequential[c(1, 2, 3, 4, 5)]
 
-vals$pals$map_div_1 <- c(
+vals$pals$map_seq_missing_1 <- vals$cols$primary["B6"]
+vals$pals$map_seq_missing_2 <- c(vals$cols$map_sequential[1], vals$cols$primary["B6"])
+vals$pals$map_seq_missing_3 <- c(vals$cols$map_sequential[c(1, 5)], vals$cols$primary["B6"])
+vals$pals$map_seq_missing_4 <- c(vals$cols$map_sequential[c(1, 3, 5)], vals$cols$primary["B6"])
+vals$pals$map_seq_missing_5 <- c(vals$cols$map_sequential[c(1, 2, 4, 5)], vals$cols$primary["B6"])
+vals$pals$map_seq_missing_6 <- c(vals$cols$map_sequential[c(1, 2, 3, 4, 5)], vals$cols$primary["B6"])
+
+vals$pals$map_div_complete_1 <- c(
   vals$cols$map_sequential["MS1"]
 )
-vals$pals$map_div_2 <- c(
+vals$pals$map_div_complete_2 <- c(
   vals$cols$map_sequential["MS1"],
   vals$cols$map_divergent["MD1"]
 )
-vals$pals$map_div_3 <- c(
+vals$pals$map_div_complete_3 <- c(
   vals$cols$map_sequential["MS1"],
   vals$cols$neutral["X4"],
   vals$cols$map_divergent["MD1"]
 )
-vals$pals$map_div_4 <- c(
+vals$pals$map_div_complete_4 <- c(
   vals$cols$map_sequential["MS1"],
   vals$cols$map_sequential["MS2"],
   vals$cols$map_divergent["MD2"],
   vals$cols$map_divergent["MD1"]
 )
-vals$pals$map_div_5 <- c(
+vals$pals$map_div_complete_5 <- c(
   vals$cols$map_sequential["MS1"],
   vals$cols$map_sequential["MS2"],
   vals$cols$neutral["X4"],
   vals$cols$map_divergent["MD2"],
   vals$cols$map_divergent["MD1"]
+)
+
+vals$pals$map_div_missing_1 <- c(
+  vals$cols$map_sequential["MS1"]
+)
+vals$pals$map_div_missing_2 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$primary["B6"]
+)
+vals$pals$map_div_missing_3 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_divergent["MD1"],
+  vals$cols$primary["B6"]
+)
+vals$pals$map_div_missing_4 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$neutral["X4"],
+  vals$cols$map_divergent["MD1"],
+  vals$cols$primary["B6"]
+)
+vals$pals$map_div_missing_5 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_sequential["MS2"],
+  vals$cols$map_divergent["MD2"],
+  vals$cols$map_divergent["MD1"],
+  vals$cols$primary["B6"]
+)
+vals$pals$map_div_missing_6 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_sequential["MS2"],
+  vals$cols$neutral["X4"],
+  vals$cols$map_divergent["MD2"],
+  vals$cols$map_divergent["MD1"],
+  vals$cols$primary["B6"]
 )
 
 vals$pals$primary_1 <- vals$cols$primary[1]
 vals$pals$primary_2 <- vals$cols$primary[c(1:2)]
 vals$pals$primary_3 <- vals$cols$primary[c(1:3)]
 vals$pals$primary_4 <- vals$cols$primary[c(1:4)]
-vals$pals$primary_5 <- vals$cols$primary[c(1:5)]
+vals$pals$primary_5 <- vals$cols$primary[c(1:4,6)]
 
 vals$pals$contrast_1 <- c(
   vals$cols$primary["B2"]
@@ -134,4 +175,17 @@ vals$pals$combination_5 <- c(
   vals$cols$primary["B6"]
 )
 
-vals$palettes <- c("map_seq", "map_div", "primary", "contrast", "combination")
+vals$palettes <- c(
+  "map_seq_complete",
+  "map_seq_missing",
+  "map_div_complete",
+  "map_div_missing",
+  "primary",
+  "contrast",
+  "combination"
+  )
+
+
+
+
+
