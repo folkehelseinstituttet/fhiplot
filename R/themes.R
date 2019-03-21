@@ -4,15 +4,14 @@
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_basic = function(base_size = 14,
-                           base_family = "",
-                           base_line_size = base_size/22,
-                           base_rect_size = base_size/22){
+theme_fhi_basic <- function(base_size = 14,
+                            base_family = "",
+                            base_line_size = base_size / 22,
+                            base_rect_size = base_size / 22) {
+  half_line <- base_size / 2
 
-  half_line <- base_size/2
-
-  #sysfonts::font_add_google("IBM Plex Sans")
-  #sysfonts::font_add_google("MS Comic Sans")
+  # sysfonts::font_add_google("IBM Plex Sans")
+  # sysfonts::font_add_google("MS Comic Sans")
 
   theme_bw(
     base_size = base_size,
@@ -42,10 +41,10 @@ theme_fhi_basic = function(base_size = 14,
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_lines = function(base_size = 14,
-                           base_family = "",
-                           base_line_size = base_size/22,
-                           base_rect_size = base_size/22){
+theme_fhi_lines <- function(base_size = 14,
+                            base_family = "",
+                            base_line_size = base_size / 22,
+                            base_rect_size = base_size / 22) {
   theme_fhi_basic(
     base_size = base_size,
     base_family = base_family,
