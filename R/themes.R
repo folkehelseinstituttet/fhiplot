@@ -4,8 +4,8 @@
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_basic = function(base_size = 18,
-                           base_family = "",
+theme_fhi_basic = function(base_size = 14,
+                           base_family = "Avenir",
                            base_line_size = base_size/22,
                            base_rect_size = base_size/22){
 
@@ -37,8 +37,8 @@ theme_fhi_basic = function(base_size = 18,
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_lines = function(base_size = 18,
-                           base_family = "",
+theme_fhi_lines = function(base_size = 14,
+                           base_family = "Avenir",
                            base_line_size = base_size/22,
                            base_rect_size = base_size/22){
   theme_fhi_basic(
