@@ -50,6 +50,10 @@ scale_fill_fhi <- function(palette = "dis_primary", direction = 1, ...) {
 #' @import data.table ggplot2
 #' @export
 Display_All_Palettes <- function(){
+  V2 <- .
+  pal <- .
+  x <- .
+
   tags <- vals$palettes
   to_plot <- vector("list", length=length(tags))
 
