@@ -4,7 +4,7 @@
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_basic <- function(base_size = 14,
+theme_fhi_basic <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
                             base_rect_size = base_size / 22) {
@@ -41,7 +41,7 @@ theme_fhi_basic <- function(base_size = 14,
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @export
-theme_fhi_lines <- function(base_size = 14,
+theme_fhi_lines <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
                             base_rect_size = base_size / 22) {
