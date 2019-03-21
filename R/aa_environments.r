@@ -5,72 +5,104 @@ vals <- new.env(parent = emptyenv())
 vals$cols <- list()
 
 vals$cols$primary <- c(
-  "B1" = "#393C61",
-  "B2" = "#0F6986",
-  "B3" = "#4A9DAB",
-  "B4" = "#38BCD7",
-  "B5" = "#93CAE3",
-  "B6" = "#92B147"
+  "B1"="#393C61",
+  "B2"="#0F6986",
+  "B3"="#4A9DAB",
+  "B4"="#38BCD7",
+  "B5"="#93CAE3",
+  "B6"="#92B147"
 )
 
 vals$cols$secondary <- c(
-  "R1" = "#6A1445",
-  "R2" = "#B10640",
-  "R3" = "#ED6F67",
-  "R4" = "#F8B766"
+  "R1"="#6A1445",
+  "R2"="#B10640",
+  "R3"="#ED6F67",
+  "R4"="#F8B766"
 )
 
 vals$cols$neutral <- c(
-  "X1" = "#38474E",
-  "X2" = "#556E7A",
-  "X3" = "#79909A",
-  "X4" = "#ABB9C1",
-  "X5" = "#CFD8DB"
+  "X1"="#38474E",
+  "X2"="#556E7A",
+  "X3"="#79909A",
+  "X4"="#ABB9C1",
+  "X5"="#CFD8DB"
 )
 
 vals$cols$map_sequential <- c(
-  "MS1" = "#0F6896",
-  "MS2" = "#4486A8",
-  "MS3" = "#6FA5BA",
-  "MS4" = "#9BC3CE",
-  "MS5" = "#C8E1E4"
+  "MS1"="#0F6896",
+  "MS2"="#4486A8",
+  "MS3"="#6FA5BA",
+  "MS4"="#9BC3CE",
+  "MS5"="#C8E1E4"
 )
 
 vals$cols$map_divergent <- c(
-  "MD1" = "#C95851",
-  "MD2" = "#E6655C",
-  "MD3" = "#EE8A7F",
-  "MD4" = "#F3ACA3"
+  "MD1"="#C95851",
+  "MD2"="#E6655C",
+  "MD3"="#EE8A7F",
+  "MD4"="#F3ACA3"
 )
 
 
 vals$pals <- list()
 
-vals$pals$seq_blue_1 <- vals$cols$map_sequential[1]
-vals$pals$seq_blue_2 <- vals$cols$map_sequential[c(1, 5)]
-vals$pals$seq_blue_3 <- vals$cols$map_sequential[c(1, 3, 5)]
-vals$pals$seq_blue_4 <- vals$cols$map_sequential[c(1, 2, 4, 5)]
-vals$pals$seq_blue_5 <- vals$cols$map_sequential[c(1, 2, 3, 4, 5)]
+vals$pals$map_seq_1 <- vals$cols$map_sequential[1]
+vals$pals$map_seq_2 <- vals$cols$map_sequential[c(1,5)]
+vals$pals$map_seq_3 <- vals$cols$map_sequential[c(1,3,5)]
+vals$pals$map_seq_4 <- vals$cols$map_sequential[c(1,2,4,5)]
+vals$pals$map_seq_5 <- vals$cols$map_sequential[c(1,2,3,4,5)]
 
-vals$pals$div_blue_red_1 <- c(
+vals$pals$map_div_1 <- c(
+  vals$cols$map_sequential["MS1"]
+)
+vals$pals$map_div_2 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_divergent["MD1"]
+)
+vals$pals$map_div_3 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$neutral["X4"],
+  vals$cols$map_divergent["MD1"]
+)
+vals$pals$map_div_4 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_sequential["MS2"],
+  vals$cols$map_divergent["MD2"],
+  vals$cols$map_divergent["MD1"]
+)
+vals$pals$map_div_5 <- c(
+  vals$cols$map_sequential["MS1"],
+  vals$cols$map_sequential["MS2"],
+  vals$cols$neutral["X4"],
+  vals$cols$map_divergent["MD2"],
+  vals$cols$map_divergent["MD1"]
+)
+
+vals$pals$primary_1 <- vals$cols$primary[1]
+vals$pals$primary_2 <- vals$cols$primary[c(1:2)]
+vals$pals$primary_3 <- vals$cols$primary[c(1:3)]
+vals$pals$primary_4 <- vals$cols$primary[c(1:4)]
+vals$pals$primary_5 <- vals$cols$primary[c(1:5)]
+
+vals$pals$contrast_1 <- c(
   vals$cols$primary["B2"]
 )
-vals$pals$div_blue_red_2 <- c(
+vals$pals$contrast_2 <- c(
   vals$cols$primary["B2"],
   vals$cols$secondary["R2"]
 )
-vals$pals$div_blue_red_3 <- c(
+vals$pals$contrast_3 <- c(
   vals$cols$primary["B2"],
   vals$cols$neutral["X4"],
   vals$cols$secondary["R2"]
 )
-vals$pals$div_blue_red_4 <- c(
+vals$pals$contrast_4 <- c(
   vals$cols$primary["B2"],
   vals$cols$primary["B3"],
   vals$cols$secondary["R3"],
   vals$cols$secondary["R2"]
 )
-vals$pals$div_blue_red_5 <- c(
+vals$pals$contrast_5 <- c(
   vals$cols$primary["B2"],
   vals$cols$primary["B3"],
   vals$cols$neutral["X4"],
@@ -78,28 +110,28 @@ vals$pals$div_blue_red_5 <- c(
   vals$cols$secondary["R2"]
 )
 
-vals$pals$dis_primary_1 <- c(vals$cols$primary["B2"])
-vals$pals$dis_primary_2 <- c(
+vals$pals$combination_1 <- c(vals$cols$primary["B2"])
+vals$pals$combination_2 <- c(
   vals$cols$primary["B2"],
   vals$cols$secondary["R2"]
-)
-vals$pals$dis_primary_3 <- c(
+  )
+vals$pals$combination_3 <- c(
   vals$cols$primary["B2"],
   vals$cols$secondary["R2"],
   vals$cols$primary["B4"]
-)
-vals$pals$dis_primary_4 <- c(
+  )
+vals$pals$combination_4 <- c(
   vals$cols$primary["B2"],
   vals$cols$secondary["R2"],
-  vals$cols$primary["B3"],
-  vals$cols$secondary["R3"]
+  vals$cols$primary["B4"],
+  vals$cols$secondary["R4"]
 )
-vals$pals$dis_primary_5 <- c(
+vals$pals$combination_5 <- c(
   vals$cols$primary["B2"],
   vals$cols$secondary["R2"],
-  vals$cols$primary["B3"],
-  vals$cols$secondary["R3"],
-  vals$cols$primary["B1"]
+  vals$cols$primary["B4"],
+  vals$cols$secondary["R4"],
+  vals$cols$primary["B6"]
 )
 
-vals$palettes <- c("seq_blue", "div_blue_red", "dis_primary")
+vals$palettes <- c("map_seq", "map_div", "primary", "contrast", "combination")
