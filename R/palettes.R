@@ -75,6 +75,7 @@ Display_All_Palettes <- function() {
   q <- q + scale_fill_manual(values = cols)
   q <- q + scale_x_continuous("Level")
   q <- q + scale_y_discrete("Palette")
+  q <- q + theme_fhi_basic()
   q <- q + theme(legend.position = "none")
   q
 }
