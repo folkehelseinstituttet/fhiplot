@@ -3,7 +3,7 @@
 #' @param palette a
 #' @param direction a
 #' @export
-fhi_pal <- function(palette = "dis_primary", direction = 1) {
+fhi_pal <- function(palette = "primary", direction = 1) {
   if (!palette %in% vals$palettes) stop("Palette '{palette}' not in: ", paste0(vals$palettes, collapse = ", "))
 
   function(n) {
@@ -61,7 +61,7 @@ Display_All_Palettes <- function() {
 
   for (i in seq_along(tags)) {
     p <- stringr::str_subset(rev(names(vals$pals)), glue::glue("^{tags[i]}"))[1]
-    to_plot[[i]] <- data.table(pal = stringr::str_remove(p, "_[0-9]$"), vals$pals[[p]])
+    to_plot[[i]] <- data.table(pal = stringr::str_remove(p, "_[0-9]$"), vals$pals[[p]], names(vals$pals[[p]]))
     to_plot[[i]][, x := 1:.N]
   }
   to_plot <- rbindlist(to_plot)
@@ -72,8 +72,9 @@ Display_All_Palettes <- function() {
 
   to_plot[, pal := factor(pal, levels = tags)]
 
-  q <- ggplot(to_plot, aes(x = x, y = pal, fill = V2))
+  q <- ggplot(to_plot, aes(x = x, y = pal, fill = V2, label=V3))
   q <- q + geom_tile(color = "black", height = 0.5, size = 1)
+  q <- q + geom_text()
   q <- q + scale_fill_manual(values = cols)
   q <- q + scale_x_continuous("Level")
   q <- q + scale_y_discrete("Palette")
