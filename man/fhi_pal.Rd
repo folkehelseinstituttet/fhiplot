@@ -5,7 +5,7 @@
 \title{Main colour extractor
 https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}
 \usage{
-fhi_pal(palette = "dis_primary", direction = 1)
+fhi_pal(palette = "primary", direction = 1)
 }
 \arguments{
 \item{palette}{a}
