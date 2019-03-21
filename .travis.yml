@@ -1,4 +1,11 @@
 language: r
+
+repos:
+  folkehelseinstituttet: https://folkehelseinstituttet.github.io/drat/
+  euromomo: https://euromomonetwork.github.io/drat/
+  raubreywhite: https://raubreywhite.github.io/drat/
+  CRAN: https://cloud.r-project.org
+
 r_packages:
 - covr
 - drat
@@ -6,6 +13,8 @@ r_packages:
 - lintr
 - styler
 - devtools
+- fhidata
+
 before_install:
 - bash travis/make.sh
 after_success:

@@ -8,3 +8,5 @@ deploy.sh
 make.sh
 cran-comments.md
 ^.*\.Rcheck
+.gitignore
+.git/
