@@ -4,7 +4,7 @@
 \alias{theme_fhi_basic}
 \title{theme_fhi_basic}
 \usage{
-theme_fhi_basic(base_size = 14, base_family = "",
+theme_fhi_basic(base_size = 12, base_family = "",
   base_line_size = base_size/22, base_rect_size = base_size/22)
 }
 \arguments{
