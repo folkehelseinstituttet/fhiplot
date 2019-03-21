@@ -4,12 +4,17 @@
 \alias{theme_fhi_lines}
 \title{theme_fhi_basic}
 \usage{
-theme_fhi_lines(base_size = 18, base_family = "")
+theme_fhi_lines(base_size = 18, base_family = "",
+  base_line_size = base_size/22, base_rect_size = base_size/22)
 }
 \arguments{
 \item{base_size}{a}
 
 \item{base_family}{a}
+
+\item{base_line_size}{a}
+
+\item{base_rect_size}{a}
 }
 \description{
 theme_fhi_basic

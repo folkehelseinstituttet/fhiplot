@@ -25,7 +25,7 @@ theme_fhi_basic = function(base_size = 18,
         colour = NA,
         size = rel(1)
         ),
-      panel.grid = element_blank(colour = "black"),
+      panel.grid = element_blank(),
       panel.grid.major = element_line(size = rel(0.1)),
       panel.grid.minor = element_line(size = rel(0.05)),
       complete = TRUE)
