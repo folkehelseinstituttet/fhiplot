@@ -22,6 +22,9 @@ theme_fhi_basic <- function(base_size = 12,
     theme(
       axis.text = element_text(colour = "black", size = rel(0.8)),
       axis.ticks = element_line(colour = "black", size = rel(0.5)),
+      axis.ticks.length = unit(rel(.25), "cm"),
+      axis.title.x = element_text(margin = margin(t = base_size), vjust = 1),
+      axis.title.y = element_text(angle = 90, margin = margin(r = base_size), vjust = 1),
       axis.line = element_line(colour = "black", size = rel(1)),
       panel.border = element_rect(
         fill = NA,
@@ -29,8 +32,6 @@ theme_fhi_basic <- function(base_size = 12,
         size = rel(1)
       ),
       panel.grid = element_blank(),
-      panel.grid.major = element_line(size = rel(0.1)),
-      panel.grid.minor = element_line(size = rel(0.05)),
       complete = TRUE
     )
 }
@@ -52,14 +53,6 @@ theme_fhi_lines <- function(base_size = 12,
     base_rect_size = base_rect_size
   ) %+replace%
     theme(
-      axis.text = element_text(colour = "black", size = rel(0.8)),
-      axis.ticks = element_line(colour = "black", size = rel(0.5)),
-      axis.line = element_line(colour = "black", size = rel(1)),
-      panel.border = element_rect(
-        fill = NA,
-        colour = NA,
-        size = rel(1)
-      ),
       panel.grid = element_line(colour = "black"),
       panel.grid.major = element_line(size = rel(0.1)),
       panel.grid.minor = element_line(size = rel(0.05)),
