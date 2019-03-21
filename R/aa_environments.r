@@ -123,7 +123,7 @@ vals$pals$primary_1 <- vals$cols$primary[1]
 vals$pals$primary_2 <- vals$cols$primary[c(1:2)]
 vals$pals$primary_3 <- vals$cols$primary[c(1:3)]
 vals$pals$primary_4 <- vals$cols$primary[c(1:4)]
-vals$pals$primary_5 <- vals$cols$primary[c(1:4,6)]
+vals$pals$primary_5 <- vals$cols$primary[c(1:4, 6)]
 
 vals$pals$contrast_1 <- c(
   vals$cols$primary["B2"]
@@ -183,9 +183,4 @@ vals$palettes <- c(
   "primary",
   "contrast",
   "combination"
-  )
-
-
-
-
-
+)
