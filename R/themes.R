@@ -18,7 +18,8 @@ theme_fhi_basic = function(base_size = 14,
     base_size = base_size,
     base_family = base_family,
     base_line_size = base_line_size,
-    base_rect_size = base_rect_size) %+replace%
+    base_rect_size = base_rect_size
+  ) %+replace%
     theme(
       axis.text = element_text(colour = "black", size = rel(0.8)),
       axis.ticks = element_line(colour = "black", size = rel(0.5)),
@@ -27,11 +28,12 @@ theme_fhi_basic = function(base_size = 14,
         fill = NA,
         colour = NA,
         size = rel(1)
-        ),
+      ),
       panel.grid = element_blank(),
       panel.grid.major = element_line(size = rel(0.1)),
       panel.grid.minor = element_line(size = rel(0.05)),
-      complete = TRUE)
+      complete = TRUE
+    )
 }
 
 #' theme_fhi_basic
@@ -48,7 +50,8 @@ theme_fhi_lines = function(base_size = 14,
     base_size = base_size,
     base_family = base_family,
     base_line_size = base_line_size,
-    base_rect_size = base_rect_size) %+replace%
+    base_rect_size = base_rect_size
+  ) %+replace%
     theme(
       axis.text = element_text(colour = "black", size = rel(0.8)),
       axis.ticks = element_line(colour = "black", size = rel(0.5)),
@@ -61,5 +64,6 @@ theme_fhi_lines = function(base_size = 14,
       panel.grid = element_line(colour = "black"),
       panel.grid.major = element_line(size = rel(0.1)),
       panel.grid.minor = element_line(size = rel(0.05)),
-      complete = TRUE)
+      complete = TRUE
+    )
 }
