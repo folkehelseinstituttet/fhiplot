@@ -8,8 +8,10 @@ output:
     fig_height: 6
 vignette: >
   %\VignetteIndexEntry{Palettes}
-  %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r setup, include = FALSE}
@@ -33,9 +35,9 @@ fhiplot::Display_All_Palettes()
 ## Maps
 
 ```{r}
-pd <- fhidata::get_data("norway_map_counties")
+pd <- fhidata::norway_map_counties
 data <- unique(pd[,c("location_code")])
-suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)])
+suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)[1:.N]])
 data[,category_with_missing:=category]
 data[1,category_with_missing:="Missing"]
 data[,category:=factor(category,levels=c("Good","Normal","Neutral","Bad","Very Bad"))]

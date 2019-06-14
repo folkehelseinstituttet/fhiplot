@@ -1,0 +1,155 @@
+---
+title: "Epicurves"
+author: "Richard"
+date: "`r Sys.Date()`"
+output:
+  rmarkdown::html_vignette:
+    fig_width: 6
+    fig_height: 6
+vignette: >
+  %\VignetteIndexEntry{Epicurves}
+  %\VignetteEncoding{UTF-8}
+  %\VignetteEngine{knitr::rmarkdown}
+editor_options: 
+  chunk_output_type: console
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r}
+library(ggplot2)
+library(data.table)
+library(fhiplot)
+```
+
+## Data
+
+We generally start with a linelist dataset.
+
+```{r}
+set.seed(4)
+dates <- sample(seq.Date(as.Date("2018-01-01"), as.Date("2018-02-08"), 1), 200, replace = T)
+d <- data.frame(
+  date = dates
+)
+print(d)
+```
+
+We now:
+
+1. Convert this into a `data.table`
+2. Aggregate it to daily data (this dataset doesn't contain any days with 0 cases)
+3. Create a 'skeleton' dataset that contains all days from the first to last day
+4. Merge the two datasets together (so you now have a dataset that contains days with 0 cases)
+5. Fill in 'missing' N's with 0 (they are the dates that came from the skeleton dataset)
+
+```{r}
+# Convert to data.table
+setDT(d)
+# aggregate
+d <- d[,
+  .(
+    N = .N
+  ),
+  keyby = .(
+    date
+  )
+]
+# aggregated daily dataset that does not contain days with 0 cases
+print(d)
+
+# create skeleton
+skeleton <- data.table(
+  date = seq.Date(min(d$date), max(d$date), 1)
+)
+
+# merge the two datasets together
+d <- merge(d, skeleton, all = T)
+
+# Fill in 'missing' Ns with 0
+d[is.na(N), N := 0]
+
+# Now you have a clean aggregated daily dataset that contains days with 0 cases!
+print(d)
+```
+
+We can also create a weekly dataset:
+
+```{r}
+# create 3 new variables:
+
+d[, isoyear := lubridate::isoyear(date)]
+# we need 'formatC' to ensure that isoweek has padded 0s at the front
+# so it is always 2 digits wide
+d[, isoweek := formatC(lubridate::isoweek(date), width = 2, flag = 0)]
+
+# paste isoyear and isoweek together
+d[, isoyear_isoweek := glue::glue("{isoyear}-{isoweek}", isoyear = isoyear, isoweek = isoweek)]
+
+# aggregate down to weekly level
+w <- d[,
+  .(
+    N = sum(N)
+  ),
+  keyby = .(
+    isoyear_isoweek
+  )
+]
+print(w)
+```
+
+## Graphs
+
+Daily epicurve
+
+```{r}
+q <- ggplot(d, aes(x = date, y = N))
+q <- q + geom_col(fill = fhiplot::vals$cols$primary["B1"], width = 0.8)
+q <- q + scale_x_date("Date")
+q <- q + scale_y_continuous("Number of reported cases",
+  breaks = scales::pretty_breaks(5),
+  expand = c(0, 0)
+)
+q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+q <- q + labs(caption = "Data extracted on 2018-02-20")
+q <- q + fhiplot::theme_fhi_lines()
+q
+```
+
+Weekly epicurve
+
+```{r}
+q <- ggplot(w, aes(x = isoyear_isoweek, y = N))
+q <- q + geom_col(fill = fhiplot::vals$cols$primary["B1"], width = 0.8)
+q <- q + scale_x_discrete("Isoweek")
+q <- q + scale_y_continuous("Number of reported cases",
+  breaks = scales::pretty_breaks(5),
+  expand = c(0, 0)
+)
+q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+q <- q + labs(caption = "Data extracted on 2018-02-20")
+q <- q + fhiplot::theme_fhi_lines()
+q
+```
+
+Weekly epicurve with vertical x-axis labels
+
+```{r}
+q <- ggplot(w, aes(x = isoyear_isoweek, y = N))
+q <- q + geom_col(fill = fhiplot::vals$cols$primary["B1"], width = 0.8)
+q <- q + scale_x_discrete("Isoweek")
+q <- q + scale_y_continuous("Number of reported cases",
+  breaks = scales::pretty_breaks(5),
+  expand = c(0, 0)
+)
+q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+q <- q + labs(caption = "Data extracted on 2018-02-20")
+q <- q + fhiplot::theme_fhi_lines()
+q <- q + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
+q
+```
