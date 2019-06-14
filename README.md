@@ -21,7 +21,7 @@ options(
 )
 ```
 
-You will then restart RStudio and you can install all FHI packages in the normal manner:
+You will then save this file, close it, and restart RStudio. You can now install all FHI packages in the normal manner:
 
 ```
 install.package("fhiplot")
