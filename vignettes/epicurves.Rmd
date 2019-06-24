@@ -33,7 +33,7 @@ We generally start with a linelist dataset (make sure it is a `data.table`!).
 
 ```{r}
 set.seed(4)
-dates <- sample(seq.Date(as.Date("2018-01-01"), as.Date("2018-02-08"), 1), 200, replace = T)
+dates <- sample(seq.Date(as.Date("2018-01-01"), as.Date("2018-02-08"), 1), 20000, replace = T)
 d <- expand.grid(
   location_code=unique(fhidata::norway_locations_current$county_code),
   date = dates
@@ -121,7 +121,7 @@ q <- ggplot(d[location_code=="county01"], aes(x = date, y = N))
 q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
 q <- q + scale_x_date("Date")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -137,7 +137,7 @@ q <- ggplot(w[location_code=="county01"], aes(x = isoyear_isoweek, y = N))
 q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
 q <- q + scale_x_discrete("Isoweek")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -153,7 +153,7 @@ q <- ggplot(w, aes(x = isoyear_isoweek, y = N))
 q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
 q <- q + scale_x_discrete("Isoweek")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -176,7 +176,7 @@ q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
 q <- q + fhiplot::scale_fill_fhi("Location",palette="primary")
 q <- q + scale_x_date("Date")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -194,7 +194,7 @@ q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
 q <- q + scale_fill_fhi("Location",palette="primary")
 q <- q + scale_x_discrete("Isoweek")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -212,7 +212,7 @@ q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
 q <- q + scale_fill_fhi("Location",palette="primary")
 q <- q + scale_x_discrete("Isoweek")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
@@ -234,11 +234,11 @@ q <- ggplot(w[location_code %in% c(
   "county04",
   "county05")], 
   aes(x = isoyear_isoweek, y = N, fill = location_code))
-q <- q + geom_col(fill = fhiplot::base_coloror, width = 0.8)
-q <- q + scale_fill_fhi("Location",palette="primary")
+q <- q + geom_col(width = 0.8)
+q <- q + fhiplot::scale_fill_fhi("Location",palette="primary")
 q <- q + scale_x_discrete("Isoweek")
 q <- q + scale_y_continuous("Number of reported cases",
-  breaks = scales::pretty_breaks(5),
+  breaks = fhiplot::pretty_breaks(5),
   expand = c(0, 0)
 )
 q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
