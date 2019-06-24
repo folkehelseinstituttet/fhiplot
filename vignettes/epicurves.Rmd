@@ -21,6 +21,19 @@ knitr::opts_chunk$set(
 )
 ```
 
+## Checklist
+
+- Make sure that your dataset contains all days/weeks (i.e. there can be days/weeks with 0 cases)
+- Use `p <- p + fhiplot::theme_fhi_lines()`
+- Use `p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)`
+- For `scale_y_continuous` use `breaks = fhiplot::pretty_breaks(5)`
+- For `scale_y_continuous` use `expand = expand_scale(mult = c(0, 0.1))`
+- If the x-axis is too cramped, make the labels vertical `p <- p + fhiplot::set_x_axis_vertical()`
+- Say when your data was extracted `p <- p + labs(caption = "Data extracted on 2018-02-20")`
+
+If multiple geographical areas:
+- Use `p <- p + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")`
+
 ```{r}
 library(ggplot2)
 library(data.table)
@@ -90,14 +103,7 @@ We can also create a weekly dataset:
 
 ```{r}
 # create 3 new variables:
-
-d[, isoyear := lubridate::isoyear(date)]
-# we need 'formatC' to ensure that isoweek has padded 0s at the front
-# so it is always 2 digits wide
-d[, isoweek := formatC(lubridate::isoweek(date), width = 2, flag = 0)]
-
-# paste isoyear and isoweek together
-d[, isoyear_isoweek := glue::glue("{isoyear}-{isoweek}", isoyear = isoyear, isoweek = isoweek)]
+d[, isoyear_isoweek := fhiplot::isoyear_isoweek(date)]
 
 # aggregate down to weekly level
 w <- d[,
@@ -117,109 +123,92 @@ print(w)
 Daily epicurve for `county01`
 
 ```{r}
-q <- ggplot(d[location_code=="county01"], aes(x = date, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + scale_x_date("Date")
-q <- q + scale_y_continuous("Number of reported cases",
+p <- ggplot(d[location_code=="county01"], aes(x = date, y = N))
+p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
+p <- p + scale_x_date("Date")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + fhiplot::theme_fhi_lines()
+p
 ```
 
 Weekly epicurve for `county01`
 
 ```{r}
-q <- ggplot(w[location_code=="county01"], aes(x = isoyear_isoweek, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + scale_x_discrete("Isoweek")
-q <- q + scale_y_continuous("Number of reported cases",
+p <- ggplot(w[location_code=="county01"], aes(x = isoyear_isoweek, y = N))
+p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
+p <- p + scale_x_discrete("Isoweek")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + fhiplot::theme_fhi_lines()
+p
 ```
 
 Weekly epicurve with vertical x-axis labels
 
 ```{r}
-q <- ggplot(w, aes(x = isoyear_isoweek, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + scale_x_discrete("Isoweek")
-q <- q + scale_y_continuous("Number of reported cases",
+p <- ggplot(w, aes(x = isoyear_isoweek, y = N))
+p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
+p <- p + scale_x_discrete("Isoweek")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q <- q + fhiplot::set_x_axis_vertical()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + fhiplot::theme_fhi_lines()
+p <- p + fhiplot::set_x_axis_vertical()
+p
 ```
 
 ## Epicurves for multiple geographical areas
 
 When we have multiple geographical areas, we use the function `lemon::facet_rep_wrap` to create multiple epicurves.
 
-Daily epicurve for all geographical areas
+Daily epicurve for all geographical areas with vertical x-axis labels
 
-```{r fig.height=10, fig.width=6}
-q <- ggplot(d, aes(x = date, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
-q <- q + fhiplot::scale_fill_fhi("Location",palette="primary")
-q <- q + scale_x_date("Date")
-q <- q + scale_y_continuous("Number of reported cases",
+```{r fig.height=10, fig.width=8}
+p <- ggplot(d, aes(x = date, y = N))
+p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
+p <- p + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
+p <- p + fhiplot::scale_fill_fhi("Location",palette="primary")
+p <- p + scale_x_date("Date")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q
-```
-
-Weekly epicurve for `county01`
-
-```{r fig.height=10, fig.width=6}
-q <- ggplot(d, aes(x = isoyear_isoweek, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
-q <- q + scale_fill_fhi("Location",palette="primary")
-q <- q + scale_x_discrete("Isoweek")
-q <- q + scale_y_continuous("Number of reported cases",
-  breaks = fhiplot::pretty_breaks(5),
-  expand = expand_scale(mult = c(0, 0.1))
-)
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + fhiplot::theme_fhi_lines()
+p <- p + fhiplot::set_x_axis_vertical()
+p
 ```
 
 Weekly epicurve with vertical x-axis labels
 
-```{r fig.height=10, fig.width=6}
-q <- ggplot(d, aes(x = isoyear_isoweek, y = N))
-q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
-q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
-q <- q + scale_fill_fhi("Location",palette="primary")
-q <- q + scale_x_discrete("Isoweek")
-q <- q + scale_y_continuous("Number of reported cases",
+```{r fig.height=10, fig.width=8}
+p <- ggplot(d, aes(x = isoyear_isoweek, y = N))
+p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
+p <- p + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y", ncol=4)
+p <- p + scale_fill_fhi("Location",palette="primary")
+p <- p + scale_x_discrete("Isoweek")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + theme_fhi_lines()
-q <- q + fhiplot::set_x_axis_vertical()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + theme_fhi_lines()
+p <- p + fhiplot::set_x_axis_vertical()
+p
 ```
 
 ## Coloured epicurves
@@ -227,23 +216,23 @@ q
 Sometimes you would like to add colours to differentiate between different variables. This can be done through the `fill` attribute.
 
 ```{r}
-q <- ggplot(w[location_code %in% c(
+p <- ggplot(w[location_code %in% c(
   "county01",
   "county02",
   "county03",
   "county04",
   "county05")], 
   aes(x = isoyear_isoweek, y = N, fill = location_code))
-q <- q + geom_col(width = 0.8)
-q <- q + fhiplot::scale_fill_fhi("Location",palette="primary")
-q <- q + scale_x_discrete("Isoweek")
-q <- q + scale_y_continuous("Number of reported cases",
+p <- p + geom_col(width = 0.8)
+p <- p + fhiplot::scale_fill_fhi("Location",palette="primary")
+p <- p + scale_x_discrete("Isoweek")
+p <- p + scale_y_continuous("Number of reported cases",
   breaks = fhiplot::pretty_breaks(5),
   expand = expand_scale(mult = c(0, 0.1))
 )
-q <- q + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
-q <- q + labs(caption = "Data extracted on 2018-02-20")
-q <- q + fhiplot::theme_fhi_lines()
-q <- q + fhiplot::set_x_axis_vertical()
-q
+p <- p + labs(title = "Epicurve from 2018-01-01 to 2018-02-20")
+p <- p + labs(caption = "Data extracted on 2018-02-20")
+p <- p + fhiplot::theme_fhi_lines()
+p <- p + fhiplot::set_x_axis_vertical()
+p
 ```
