@@ -7,12 +7,11 @@ Depends: R (>= 3.3.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2, data.table, stringr, glue, scales
+Imports: ggplot2, data.table, stringr, glue
 Suggests: testthat,
     knitr,
     rmarkdown,
     fhidata,
-    scales,
     lubridate,
     lemon
 RoxygenNote: 6.1.1

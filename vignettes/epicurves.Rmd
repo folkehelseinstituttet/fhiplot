@@ -207,7 +207,7 @@ Weekly epicurve with vertical x-axis labels
 
 ```{r}
 q <- ggplot(d, aes(x = isoyear_isoweek, y = N))
-q <- q + geom_col(fill = fhiplot::base_coloror, width = 0.8)
+q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)
 q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")
 q <- q + scale_fill_fhi("Location",palette="primary")
 q <- q + scale_x_discrete("Isoweek")

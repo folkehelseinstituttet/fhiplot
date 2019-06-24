@@ -8,6 +8,8 @@ pretty_breaks(n = 5, digits = 0, ...)
 }
 \arguments{
 \item{n}{a}
+
+\item{digits}{number of decimal places}
 }
 \description{
 pretty_breaks

@@ -53,6 +53,7 @@ scale_fill_fhi <- function(..., palette = "dis_primary", direction = 1) {
 #' @export
 Display_All_Palettes <- function() {
   V2 <- NULL
+  V3 <- NULL
   pal <- NULL
   x <- NULL
 
