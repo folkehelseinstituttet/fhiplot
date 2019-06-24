@@ -29,9 +29,9 @@ isoweek_n <- function(date){
   lubridate::isoweek(date)
 }
 
-#' isoweek_isoyear
+#' isoyear_isoweek
 #' @param date Date
 #' @export
-isoweek_isoyear <- function(date){
+isoyear_isoweek <- function(date){
   c(glue::glue("{isoyear}-{isoweek}", isoyear = lubridate::isoyear(date), isoweek = isoweek_c(date)))
 }

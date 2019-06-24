@@ -46,7 +46,10 @@ We generally start with a linelist dataset (make sure it is a `data.table`!).
 
 ```{r}
 set.seed(4)
-dates <- sample(seq.Date(as.Date("2018-01-01"), as.Date("2018-02-08"), 1), 20000, replace = T)
+dates <- sample(seq.Date(as.Date("2018-01-01"), 
+                         as.Date("2018-02-08"), 1),
+                20000, 
+                replace = T)
 d <- expand.grid(
   location_code=unique(fhidata::norway_locations_current$county_code),
   date = dates
