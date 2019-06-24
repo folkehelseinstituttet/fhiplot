@@ -9,6 +9,7 @@ format_nor <- function (x, digits = 0){
 #' pretty_breaks
 #' @param n a
 #' @param digits number of decimal places
+#' @param ... dots
 #' @export
 pretty_breaks <- function(n = 5, digits = 0, ...){
   force_all(n, ...)

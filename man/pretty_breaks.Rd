@@ -10,6 +10,8 @@ pretty_breaks(n = 5, digits = 0, ...)
 \item{n}{a}
 
 \item{digits}{number of decimal places}
+
+\item{...}{dots}
 }
 \description{
 pretty_breaks
