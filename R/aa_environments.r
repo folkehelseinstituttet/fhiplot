@@ -188,5 +188,3 @@ vals$palettes <- c(
 #' Base colour
 #' @export base_color
 base_color <- vals$cols$primary["B1"]
-
-
