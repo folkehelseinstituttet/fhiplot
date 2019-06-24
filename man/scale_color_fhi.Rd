@@ -5,14 +5,14 @@
 \title{Main colour extractor
 https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2}
 \usage{
-scale_color_fhi(palette = "dis_primary", direction = 1, ...)
+scale_color_fhi(..., palette = "dis_primary", direction = 1)
 }
 \arguments{
+\item{...}{as}
+
 \item{palette}{as}
 
 \item{direction}{as}
-
-\item{...}{as}
 }
 \description{
 Main colour extractor

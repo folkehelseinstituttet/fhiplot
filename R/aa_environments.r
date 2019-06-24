@@ -1,6 +1,6 @@
 #' Colors
 #' @export vals
-vals <- new.env(parent = emptyenv())
+vals <- new.env()
 
 vals$cols <- list()
 
@@ -184,3 +184,9 @@ vals$palettes <- c(
   "contrast",
   "combination"
 )
+
+#' Base colour
+#' @export base_col
+base_color <- vals$cols$primary["B1"]
+
+

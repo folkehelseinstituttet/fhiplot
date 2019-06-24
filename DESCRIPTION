@@ -13,6 +13,7 @@ Suggests: testthat,
     rmarkdown,
     fhidata,
     scales,
-    lubridate
+    lubridate,
+    lemon
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

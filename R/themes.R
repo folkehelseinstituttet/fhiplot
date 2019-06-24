@@ -31,6 +31,7 @@ theme_fhi_basic <- function(base_size = 12,
         colour = NA,
         size = rel(1)
       ),
+      strip.background = element_rect(colour = "white", fill = "white"),
       panel.grid = element_blank(),
       complete = TRUE
     )
