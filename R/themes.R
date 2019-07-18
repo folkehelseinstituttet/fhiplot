@@ -56,15 +56,17 @@ theme_fhi_lines <- function(base_size = 12,
     base_rect_size = base_rect_size
   ) %+replace%
     theme(
-      panel.grid.major = element_line(size = rel(0.1)),
-      panel.grid.minor = element_line(size = rel(0.05)),
+      panel.background = element_rect(fill = NA, colour = NA),
+      panel.grid = element_line(),
+      panel.grid.major = element_line(colour = "black", size = rel(0.1)),
+      panel.grid.minor = element_line(colour = "black", size = rel(0.05)),
       complete = TRUE
     )
 
   if (panel_on_top) {
     retval <- retval %+replace%
       theme(
-        panel.background = element_rect(fill = NA),
+        panel.background = element_rect(fill = NA, colour = NA),
         panel.ontop = TRUE
       )
   }
