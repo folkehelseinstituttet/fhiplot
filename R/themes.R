@@ -42,12 +42,15 @@ theme_fhi_basic <- function(base_size = 12,
 #' @param base_family a
 #' @param base_line_size a
 #' @param base_rect_size a
+#' @param panel_on_top a
 #' @export
 theme_fhi_lines <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
-                            base_rect_size = base_size / 22) {
-  theme_fhi_basic(
+                            base_rect_size = base_size / 22,
+                            panel_on_top = TRUE
+                            ) {
+  retval <- theme_fhi_basic(
     base_size = base_size,
     base_family = base_family,
     base_line_size = base_line_size,
@@ -59,4 +62,14 @@ theme_fhi_lines <- function(base_size = 12,
       panel.grid.minor = element_line(size = rel(0.05)),
       complete = TRUE
     )
+
+  if(panel_on_top){
+    retval <- retval %+replace%
+      theme(
+        panel.background = element_rect(fill=NA),
+        panel.ontop = TRUE
+      )
+  }
+
+  return(retval)
 }

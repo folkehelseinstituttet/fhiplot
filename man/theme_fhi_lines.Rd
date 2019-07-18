@@ -5,7 +5,8 @@
 \title{theme_fhi_basic}
 \usage{
 theme_fhi_lines(base_size = 12, base_family = "",
-  base_line_size = base_size/22, base_rect_size = base_size/22)
+  base_line_size = base_size/22, base_rect_size = base_size/22,
+  panel_on_top = TRUE)
 }
 \arguments{
 \item{base_size}{a}
@@ -15,6 +16,8 @@ theme_fhi_lines(base_size = 12, base_family = "",
 \item{base_line_size}{a}
 
 \item{base_rect_size}{a}
+
+\item{panel_on_top}{a}
 }
 \description{
 theme_fhi_basic
