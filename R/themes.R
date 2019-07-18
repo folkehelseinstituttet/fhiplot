@@ -56,7 +56,6 @@ theme_fhi_lines <- function(base_size = 12,
     base_rect_size = base_rect_size
   ) %+replace%
     theme(
-      panel.grid = element_line(colour = "black"),
       panel.grid.major = element_line(size = rel(0.1)),
       panel.grid.minor = element_line(size = rel(0.05)),
       complete = TRUE
