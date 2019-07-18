@@ -48,8 +48,7 @@ theme_fhi_lines <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
                             base_rect_size = base_size / 22,
-                            panel_on_top = TRUE
-                            ) {
+                            panel_on_top = TRUE) {
   retval <- theme_fhi_basic(
     base_size = base_size,
     base_family = base_family,
@@ -63,10 +62,10 @@ theme_fhi_lines <- function(base_size = 12,
       complete = TRUE
     )
 
-  if(panel_on_top){
+  if (panel_on_top) {
     retval <- retval %+replace%
       theme(
-        panel.background = element_rect(fill=NA),
+        panel.background = element_rect(fill = NA),
         panel.ontop = TRUE
       )
   }
