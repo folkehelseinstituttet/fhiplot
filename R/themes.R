@@ -3,17 +3,19 @@
 #' @param base_family a
 #' @param base_line_size a
 #' @param base_rect_size a
+#' @param legend_position a
 #' @export
 theme_fhi_basic <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
-                            base_rect_size = base_size / 22) {
+                            base_rect_size = base_size / 22,
+                            legend_position = "right") {
   half_line <- base_size / 2
 
   # sysfonts::font_add_google("IBM Plex Sans")
   # sysfonts::font_add_google("MS Comic Sans")
 
-  theme_bw(
+  retval <- theme_bw(
     base_size = base_size,
     base_family = base_family,
     base_line_size = base_line_size,
@@ -35,6 +37,16 @@ theme_fhi_basic <- function(base_size = 12,
       panel.grid = element_blank(),
       complete = TRUE
     )
+
+  if(legend_position=="bottom"){
+    retval <- retval %+replace%
+      theme(
+        legend.position = "bottom",
+        legend.direction = "horizontal"
+      )
+  }
+
+  return(retval)
 }
 
 #' theme_fhi_basic
@@ -43,17 +55,20 @@ theme_fhi_basic <- function(base_size = 12,
 #' @param base_line_size a
 #' @param base_rect_size a
 #' @param panel_on_top a
+#' @param legend_position a
 #' @export
 theme_fhi_lines <- function(base_size = 12,
                             base_family = "",
                             base_line_size = base_size / 22,
                             base_rect_size = base_size / 22,
+                            legend_position = "right",
                             panel_on_top = TRUE) {
   retval <- theme_fhi_basic(
     base_size = base_size,
     base_family = base_family,
     base_line_size = base_line_size,
-    base_rect_size = base_rect_size
+    base_rect_size = base_rect_size,
+    legend_position = legend_position
   ) %+replace%
     theme(
       panel.background = element_rect(fill = NA, colour = NA),
