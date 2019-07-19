@@ -16,6 +16,7 @@ Suggests: testthat,
     rmarkdown,
     fhidata,
     lubridate,
-    lemon
+    lemon,
+    fhi
 RoxygenNote: 6.1.1
 VignetteBuilder: knitr

@@ -106,7 +106,7 @@ We can also create a weekly dataset:
 
 ```{r}
 # create 3 new variables:
-d[, isoyear_isoweek := fhiplot::isoyear_isoweek(date)]
+d[, isoyearweek := fhi::isoyearweek(date)]
 
 # aggregate down to weekly level
 w <- d[,
@@ -115,7 +115,7 @@ w <- d[,
   ),
   keyby = .(
     location_code,
-    isoyear_isoweek
+    isoyearweek
   )
 ]
 print(w)
@@ -142,7 +142,7 @@ p
 Weekly epicurve for `county01`
 
 ```{r}
-p <- ggplot(w[location_code=="county01"], aes(x = isoyear_isoweek, y = N))
+p <- ggplot(w[location_code=="county01"], aes(x = isoyearweek, y = N))
 p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
 p <- p + scale_x_discrete("Isoweek")
 p <- p + scale_y_continuous("Number of reported cases",
@@ -158,7 +158,7 @@ p
 Weekly epicurve with vertical x-axis labels
 
 ```{r}
-p <- ggplot(w, aes(x = isoyear_isoweek, y = N))
+p <- ggplot(w, aes(x = isoyearweek, y = N))
 p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
 p <- p + scale_x_discrete("Isoweek")
 p <- p + scale_y_continuous("Number of reported cases",
@@ -198,7 +198,7 @@ p
 Weekly epicurve with vertical x-axis labels
 
 ```{r fig.height=10, fig.width=8}
-p <- ggplot(d, aes(x = isoyear_isoweek, y = N))
+p <- ggplot(d, aes(x = isoyearweek, y = N))
 p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
 p <- p + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y", ncol=4)
 p <- p + scale_fill_fhi("Location",palette="primary")
@@ -225,7 +225,7 @@ p <- ggplot(w[location_code %in% c(
   "county03",
   "county04",
   "county05")], 
-  aes(x = isoyear_isoweek, y = N, fill = location_code))
+  aes(x = isoyearweek, y = N, fill = location_code))
 p <- p + geom_col(width = 0.8)
 p <- p + fhiplot::scale_fill_fhi("Location",palette="primary")
 p <- p + scale_x_discrete("Isoweek")
