@@ -17,21 +17,20 @@
 #' @import scales
 #' @export
 make_line_excess_graph <- function(
-  pd,
-  x,
-  dataVal,
-  dataZ,
-  dataCIL = NULL,
-  dataCIU = NULL,
-  allPoints = TRUE,
-  title = NULL,
-  pointShift = 0,
-  xShift = 0,
-  weekNumbers = FALSE,
-  step = FALSE,
-  GetCols,
-  legend_position = "right"
-  ) {
+                                   pd,
+                                   x,
+                                   dataVal,
+                                   dataZ,
+                                   dataCIL = NULL,
+                                   dataCIU = NULL,
+                                   allPoints = TRUE,
+                                   title = NULL,
+                                   pointShift = 0,
+                                   xShift = 0,
+                                   weekNumbers = FALSE,
+                                   step = FALSE,
+                                   GetCols,
+                                   legend_position = "right") {
   pd <- as.data.frame(pd)
   pd$printYear <- format.Date(pd[[x]], "%G")
   pd$printWeek <- format.Date(pd[[x]], "%V")
@@ -95,7 +94,7 @@ make_line_excess_graph <- function(
   if (includeMedium) q <- q + geom_point(aes_string(x = "xShifted", y = dataVal, colour = shQuote("L2")), size = 2, data = pd[pd$status == "Medium", ])
   if (includeHigh) q <- q + geom_point(aes_string(x = "xShifted", y = dataVal, colour = shQuote("L1")), size = 2, data = pd[pd$status == "High", ])
   q <- q + geom_hline(yintercept = 0, colour = "red")
-  q <- q + theme_fhi_lines(legend_position=legend_position)
+  q <- q + theme_fhi_lines(legend_position = legend_position)
 
   breaksDF <- pd[pd$printWeek != "", ]
   breaksDF <- DateBreaks(breaksDF, limits, weekNumbers)
@@ -106,7 +105,7 @@ make_line_excess_graph <- function(
   #  "Betydelig hyere enn forventet",
   #  "Hyere enn forventet",
   #  "Forventet"))
-  if (!is.null(colours)) q <- q + scale_colour_manual("",values = colours)
+  if (!is.null(colours)) q <- q + scale_colour_manual("", values = colours)
   q <- q + guides(colour = FALSE)
   q <- q + coord_cartesian(xlim = limits, expand = FALSE)
   if (!is.null(title)) q <- q + labs(title = title)

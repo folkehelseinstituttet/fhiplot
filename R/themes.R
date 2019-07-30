@@ -38,7 +38,7 @@ theme_fhi_basic <- function(base_size = 12,
       complete = TRUE
     )
 
-  if(legend_position=="bottom"){
+  if (legend_position == "bottom") {
     retval <- retval %+replace%
       theme(
         legend.position = "bottom",

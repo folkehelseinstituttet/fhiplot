@@ -64,22 +64,22 @@ DateBreaks <- function(breaksDF, limits, weekNumbers) {
 #' @import ggplot2
 #' @export
 make_line_threshold_plot <- function(pd,
-                                  x,
-                                  dataVal,
-                                  dataCIL = NULL,
-                                  dataCIU = NULL,
-                                  L1,
-                                  L2,
-                                  L3,
-                                  L4,
-                                  allPoints = TRUE,
-                                  title = NULL,
-                                  pointShift = 0,
-                                  xShift = 0,
-                                  weekNumbers = FALSE,
-                                  step = FALSE,
-                                  GetCols,
-                                  legend_position = "right") {
+                                     x,
+                                     dataVal,
+                                     dataCIL = NULL,
+                                     dataCIU = NULL,
+                                     L1,
+                                     L2,
+                                     L3,
+                                     L4,
+                                     allPoints = TRUE,
+                                     title = NULL,
+                                     pointShift = 0,
+                                     xShift = 0,
+                                     weekNumbers = FALSE,
+                                     step = FALSE,
+                                     GetCols,
+                                     legend_position = "right") {
   pd <- as.data.frame(pd)
   pd$printYear <- format.Date(pd[[x]], "%G")
   pd$printWeek <- format.Date(pd[[x]], "%V")
@@ -137,7 +137,7 @@ make_line_threshold_plot <- function(pd,
   # q <- q + scale_xcontinuous("Dato", breaks = breaksDF$xShifted,  labels = breaksDF$printLabel)
 
   q <- q + scale_y_continuous("")
-  q <- q + scale_fill_manual("",values = GetCols(), labels = c(
+  q <- q + scale_fill_manual("", values = GetCols(), labels = c(
     sprintf("Betydelig h%syere enn forventet", fhi::NORCHAR$oe),
     sprintf("H%syere enn forventet", fhi::NORCHAR$oe),
     "Forventet"
