@@ -4,7 +4,8 @@
 \alias{make_influenza_threshold_chart}
 \title{A treshold chart of the type used for influenza}
 \usage{
-make_influenza_threshold_chart(data, title, lang = "NB")
+make_influenza_threshold_chart(data, title, lang = "NB", weeks = c(40,
+  20))
 }
 \arguments{
 \item{data}{A data.table for a season of influenza}
@@ -12,6 +13,8 @@ make_influenza_threshold_chart(data, title, lang = "NB")
 \item{title}{the title for the chart}
 
 \item{lang}{language of labels}
+
+\item{weeks}{start and end week for the plot}
 }
 \description{
 A treshold chart of the type used for influenza
