@@ -196,4 +196,4 @@ warning_color <- c(
   "med" = vals$cols$secondary["R4"],
   "hig" = vals$cols$secondary["R2"]
 )
-names(warning_color) <- c("low","med","hig")
+names(warning_color) <- c("low", "med", "hig")
