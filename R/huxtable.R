@@ -1,8 +1,8 @@
-#' fhi_huxtable_theme
+#' huxtable_theme_fhi_basic
 #' @param ht A huxtable
 #' @param position Position
 #' @export
-huxtable_theme <- function(ht, position = "center") {
+huxtable_theme_fhi_basic <- function(ht, position = "center") {
   ht <- huxtable::set_top_padding(ht, 0.2)
   ht <- huxtable::set_bottom_padding(ht, 0.2)
   ht <- huxtable::set_background_color(ht, huxtable::evens, huxtable::everywhere, "#F2F2F2")
