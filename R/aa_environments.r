@@ -192,8 +192,8 @@ base_color <- vals$cols$primary["B1"]
 #' Warning color
 #' @export warning_color
 warning_color <- c(
-  "low" = vals$cols$primary["B4"],
-  "med" = vals$cols$secondary["R4"],
-  "hig" = vals$cols$secondary["R2"]
+  "low" = vals$cols$primary["B5"],
+  "med" = vals$cols$secondary["R5"],
+  "hig" = vals$cols$secondary["R3"]
 )
 names(warning_color) <- c("low","med","hig")
