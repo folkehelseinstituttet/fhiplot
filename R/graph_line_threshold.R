@@ -108,16 +108,16 @@ make_line_threshold_plot <- function(pd,
 
   q <- ggplot(pd, aes_string(x = x))
   if (step) {
-    q <- q + geom_stepribbon(aes_string(ymin = L3, ymax = L4, fill = shQuote("L1")), direction = "vh", alpha = 0.4)
-    q <- q + geom_stepribbon(aes_string(ymin = L2, ymax = L3, fill = shQuote("L2")), direction = "vh", alpha = 0.4)
-    q <- q + geom_stepribbon(aes_string(ymin = L1, ymax = L2, fill = shQuote("L3")), direction = "vh", alpha = 0.4)
-    if (!is.null(dataCIL) & !is.null(dataCIU)) q <- q + geom_stepribbon(aes_string(ymin = dataCIL, ymax = dataCIU), fill = "black", direction = "vh", alpha = 0.4)
+    q <- q + geom_stepribbon(aes_string(ymin = L3, ymax = L4, fill = shQuote("L1")), direction = "vh", alpha = 1)
+    q <- q + geom_stepribbon(aes_string(ymin = L2, ymax = L3, fill = shQuote("L2")), direction = "vh", alpha = 1)
+    q <- q + geom_stepribbon(aes_string(ymin = L1, ymax = L2, fill = shQuote("L3")), direction = "vh", alpha = 1)
+    if (!is.null(dataCIL) & !is.null(dataCIU)) q <- q + geom_stepribbon(aes_string(ymin = dataCIL, ymax = dataCIU), fill = "black", direction = "vh", alpha = 1)
     q <- q + geom_step(aes_string(y = dataVal), direction = "vh", lwd = 1)
   } else {
-    q <- q + geom_ribbon(aes_string(ymin = L3, ymax = L4, fill = shQuote("L1")), alpha = 0.4)
-    q <- q + geom_ribbon(aes_string(ymin = L2, ymax = L3, fill = shQuote("L2")), alpha = 0.4)
-    q <- q + geom_ribbon(aes_string(ymin = L1, ymax = L2, fill = shQuote("L3")), alpha = 0.4)
-    if (!is.null(dataCIL) & !is.null(dataCIU)) q <- q + geom_ribbon(aes_string(ymin = dataCIL, ymax = dataCIU), fill = "black", alpha = 0.4)
+    q <- q + geom_ribbon(aes_string(ymin = L3, ymax = L4, fill = shQuote("L1")), alpha = 1)
+    q <- q + geom_ribbon(aes_string(ymin = L2, ymax = L3, fill = shQuote("L2")), alpha = 1)
+    q <- q + geom_ribbon(aes_string(ymin = L1, ymax = L2, fill = shQuote("L3")), alpha = 1)
+    if (!is.null(dataCIL) & !is.null(dataCIU)) q <- q + geom_ribbon(aes_string(ymin = dataCIL, ymax = dataCIU), fill = "black", alpha = 1)
     q <- q + geom_line(aes_string(y = dataVal), lwd = 1)
   }
   if("low_n" %in% colnames(pd)){

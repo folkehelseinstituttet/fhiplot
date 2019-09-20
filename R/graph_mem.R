@@ -17,6 +17,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks=c(40,
   high <- NULL
   very_high <- NULL
   rate <- NULL
+
   first_year <- min(data[, year])
   second_year <- max(data[, year])
                     
@@ -30,12 +31,13 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks=c(40,
   if(nrow(data) == 0){
     data <- rbind(
       data.table(
-        week=weeks[1],
-        very_high=data[1, very_high],
-        high=data[1, high],
-        medium=data[1, medium],
-        low=data[1, low],
-        rate=NA),
+        week = weeks[1],
+        very_high = data[1, very_high],
+        high = data[1, high],
+        medium = data[1, medium],
+        low = data[1, low],
+        rate = NA
+      ),
       data.table(
         week=weeks[2] + right_side_factor,
         very_high=data[1, very_high],
@@ -46,6 +48,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks=c(40,
     )
   }
   last_week <- data[, week][nrow(data)]
+
 
   week_levels <- c(weeks[1]:52, 1:weeks[2] + right_side_factor)
 
@@ -127,6 +130,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks=c(40,
         x = c(end_point, end_point, end_point, end_point, end_point),
         y = c( low / 2, (medium + low) / 2, (high+medium) / 2, (very_high + high) / 2, very_high * 1.05)
       ),
+
       aes(x=x, y=y, label=text),
       color="white",
       size=4
@@ -134,7 +138,8 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks=c(40,
     
     }
 
-  q <- q + ggtitle(title) +
+  q <- q +
+    ggtitle(title) +
     ylab(ylab) +
     scale_y_continuous(
       limits = c(0, max(data[, very_high]) * 1.1),

@@ -17,7 +17,8 @@ vals$cols$secondary <- c(
   "R1" = "#6A1445",
   "R2" = "#B10640",
   "R3" = "#ED6F67",
-  "R4" = "#F8B766"
+  "R4" = "#F8B766",
+  "R5" = "#FEE090"
 )
 
 vals$cols$neutral <- c(
@@ -185,6 +186,15 @@ vals$palettes <- c(
   "combination"
 )
 
-#' Base colour
+#' Base color
 #' @export base_color
 base_color <- vals$cols$primary["B1"]
+
+#' Warning color
+#' @export warning_color
+warning_color <- c(
+  "low" = vals$cols$primary["B5"],
+  "med" = vals$cols$secondary["R5"],
+  "hig" = vals$cols$secondary["R3"]
+)
+names(warning_color) <- c("low", "med", "hig")

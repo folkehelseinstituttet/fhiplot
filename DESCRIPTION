@@ -1,6 +1,6 @@
 Package: fhiplot
 Title: Graphs For 'ggplot2' In The Style Of FHI 
-Version: 2019.7.30
+Version: 2019.9.12
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
   person("Gunnar", "Ro", email = "gunr@fhi.no", role = c("aut"))
@@ -10,7 +10,7 @@ Depends: R (>= 3.3.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2, data.table, stringr, glue, scales
+Imports: ggplot2, data.table, stringr, glue, scales, huxtable
 Suggests: testthat,
     knitr,
     rmarkdown,
