@@ -5,7 +5,7 @@
 \title{A treshold chart of the type used for influenza}
 \usage{
 make_influenza_threshold_chart(data, title, lang = "NB", weeks = c(40,
-  20))
+  20), color_palette = "fhi", legend_control = "legend")
 }
 \arguments{
 \item{data}{A data.table for a season of influenza}
@@ -15,6 +15,10 @@ make_influenza_threshold_chart(data, title, lang = "NB", weeks = c(40,
 \item{lang}{language of labels}
 
 \item{weeks}{start and end week for the plot}
+
+\item{color_palette}{which color palette to use (fhi uses standard fhiplot, otherwise influensa palette is used)}
+
+\item{legend_control}{using a legend or text on the chart}
 }
 \description{
 A treshold chart of the type used for influenza
