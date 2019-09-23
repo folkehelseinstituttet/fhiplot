@@ -142,8 +142,8 @@ make_line_threshold_plot <- function(pd,
 
   q <- q + scale_y_continuous("")
   fill_labels <-  c(
-    sprintf("Betydelig h%syere enn forventet", fhi::NORCHAR$oe),
-    sprintf("H%syere enn forventet", fhi::NORCHAR$oe),
+    glue::glue("Betydelig h{fhi::nb$oe}syere enn forventet"),
+    glue::glue("H{fhi::nb$oe}syere enn forventet"),
     "Forventet")
   fill_values <- GetCols()
   if("low_n" %in% colnames(pd)){
