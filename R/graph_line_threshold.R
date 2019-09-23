@@ -120,8 +120,8 @@ make_line_threshold_plot <- function(pd,
     if (!is.null(dataCIL) & !is.null(dataCIU)) q <- q + geom_ribbon(aes_string(ymin = dataCIL, ymax = dataCIU), fill = "black", alpha = 1)
     q <- q + geom_line(aes_string(y = dataVal), lwd = 1)
   }
-  if("low_n" %in% colnames(pd)){
-    q <- q + geom_ribbon(aes( ymin=low_n, ymax=high_n, fill="test"),  alpha=0.4)
+  if ("low_n" %in% colnames(pd)) {
+    q <- q + geom_ribbon(aes(ymin = low_n, ymax = high_n, fill = "test"), alpha = 0.4)
   }
   if (allPoints) {
     q <- q + geom_point(aes_string(x = "xShifted", y = dataVal), size = 4, fill = "black")
@@ -132,8 +132,8 @@ make_line_threshold_plot <- function(pd,
   if (includeHigh) q <- q + geom_point(aes_string(x = "xShifted", y = dataVal, colour = shQuote("L1")), size = 2, data = pd[pd$status == "High", ])
   q <- q + theme_fhi_lines(legend_position = legend_position)
 
- 
-  
+
+
   breaksDF <- pd[pd$printWeek != "", ]
   breaksDF <- DateBreaks(breaksDF, limits, weekNumbers)
 
@@ -141,16 +141,17 @@ make_line_threshold_plot <- function(pd,
   # q <- q + scale_xcontinuous("Dato", breaks = breaksDF$xShifted,  labels = breaksDF$printLabel)
 
   q <- q + scale_y_continuous("")
-  fill_labels <-  c(
+  fill_labels <- c(
     glue::glue("Betydelig h{fhi::nb$oe}syere enn forventet"),
     glue::glue("H{fhi::nb$oe}syere enn forventet"),
-    "Forventet")
+    "Forventet"
+  )
   fill_values <- GetCols()
-  if("low_n" %in% colnames(pd)){
+  if ("low_n" %in% colnames(pd)) {
     fill_labels <- c(fill_labels, "Usikkerhet fra manglende kompletthet")
     fill_values <- c(fill_values, "grey")
   }
-  q <- q + scale_fill_manual("", values = fill_values , labels = fill_labels)
+  q <- q + scale_fill_manual("", values = fill_values, labels = fill_labels)
   if (!is.null(colours)) q <- q + scale_colour_manual(values = colours)
   q <- q + guides(colour = FALSE)
   q <- q + coord_cartesian(xlim = limits, expand = FALSE)
