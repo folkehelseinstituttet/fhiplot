@@ -76,12 +76,12 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
     legend_label <- "Level"
     week_label <- "Week"
   } else if (lang == "NB") {
-    label_very_low <- "Sv\u00E6rt lav"
-    label_low <- "Lav"
+    label_very_low <- "Sv\u00E6rt lavt"
+    label_low <- "Lavt"
     label_med <- "Middels"
-    label_high <- "H\u00F8y"
-    label_very_high <- "Sv\u00E6rt h\u00F8y"
-    ylab <- "% pasienter med ILS"
+    label_high <- "H\u00F8yt"
+    label_very_high <- "Sv\u00E6rt h\u00F8yt"
+    ylab <- "Andel pasienter med ILS (%)"
     legend_label <- "Niv\u00E5"
     week_label <- "Uke"
   }
@@ -120,7 +120,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
   )
 
   if (legend_control == "text") {
-    end_point <- (52 - weeks[1]) + weeks[2] - 0.7
+    end_point <- (52 - weeks[1]) + weeks[2] - 1.1
     low <- plot_data[1, low]
     medium <- plot_data[1, medium]
     high <- plot_data[1, high]
