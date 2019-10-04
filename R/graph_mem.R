@@ -120,7 +120,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
   )
 
   if (legend_control == "text") {
-    end_point <- (52 - weeks[1]) + weeks[2] - 1.1
+    end_point <- (52 - weeks[1]) + weeks[2] - 1.5
     low <- plot_data[1, low]
     medium <- plot_data[1, medium]
     high <- plot_data[1, high]
@@ -135,7 +135,8 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
 
         aes(x = x, y = y, label = text),
         color = "white",
-        size = 4
+        fontface = "bold",
+        size = 5
       )
   }
 
