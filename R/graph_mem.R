@@ -51,9 +51,16 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
   last_week <- data[, week][nrow(data)]
 
 
-  week_levels <- c(weeks[1]:52, 1:weeks[2] + right_side_factor)
+  week_levels <- c((weeks[1] -1 ):52, 1:weeks[2] + right_side_factor)
 
   if ((last_week < (weeks[2] + right_side_factor)) | (first_year == second_year)) {
+     data <- rbind( data.table(
+      week = weeks[1] - 1,
+      very_high = data[1, very_high],
+      high = data[1, high],
+      medium = data[1, medium],
+      low = data[1, low]
+    ),data, fill = TRUE)
     data <- rbind(data, data.table(
       week = weeks[2] + right_side_factor,
       very_high = data[1, very_high],
@@ -120,7 +127,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
   )
 
   if (legend_control == "text") {
-    end_point <- (52 - weeks[1]) + weeks[2] - 1.5
+    end_point <- (52 - weeks[1]) + weeks[2] - 0.8
     low <- plot_data[1, low]
     medium <- plot_data[1, medium]
     high <- plot_data[1, high]
@@ -160,7 +167,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
     theme(
       axis.title = element_text(size = 18),
       axis.text = element_text(size = 13)
-    )
+    ) 
 
 
   if (sum(!is.na(plot_data[, rate]) > 0)) {
