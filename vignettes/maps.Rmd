@@ -25,7 +25,7 @@ knitr::opts_chunk$set(
 library(ggplot2)
 library(fhiplot)
 
-pd <- fhidata::norway_map_counties
+pd <- fhidata::norway_map_counties_b2020
 data <- unique(pd[,c("location_code")])
 suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)[1:.N]])
 data[,category_with_missing:=category]

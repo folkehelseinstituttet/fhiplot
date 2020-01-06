@@ -51,7 +51,7 @@ dates <- sample(seq.Date(as.Date("2018-01-01"),
                 20000, 
                 replace = T)
 d <- expand.grid(
-  location_code=unique(fhidata::norway_locations_current$county_code),
+  location_code=unique(fhidata::norway_locations_b2020$county_code),
   date = dates
 )
 # Convert to data.table
@@ -88,7 +88,7 @@ print(d)
 
 # create skeleton
 skeleton <- data.table(expand.grid(
-  location_code = unique(fhidata::norway_locations_current$county_code),
+  location_code = unique(fhidata::norway_locations_b2020$county_code),
   date = seq.Date(min(d$date), max(d$date), 1)
 ))
 
