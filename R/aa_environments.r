@@ -223,7 +223,7 @@ vals$pals$contrast_5 <- c(
 
 vals$pals$combination_1 <- c(
   colors$v1$primary["B2"]
-  )
+)
 vals$pals$combination_2 <- c(
   colors$v1$primary["B2"],
   colors$v1$secondary["R2"]
