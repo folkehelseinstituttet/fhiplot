@@ -46,12 +46,11 @@ scale_fill_fhi <- function(..., palette = "primary", direction = 1) {
   ggplot2::discrete_scale("fill", paste0("fhi_", palette), palette = pal, ...)
 }
 
-
 #' Main colour extractor
 #' https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
 #' @import data.table ggplot2
 #' @export
-Display_All_Palettes <- function() {
+display_all_palettes <- function() {
   V2 <- NULL
   V3 <- NULL
   pal <- NULL
@@ -82,4 +81,9 @@ Display_All_Palettes <- function() {
   q <- q + theme_fhi_basic()
   q <- q + theme(legend.position = "none")
   q
+}
+
+Display_All_Palettes <- function() {
+  .Deprecated("display_all_palettes")
+  display_all_palettes()
 }

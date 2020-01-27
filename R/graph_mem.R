@@ -107,7 +107,7 @@ make_influenza_threshold_chart <- function(data, title, lang = "NB", weeks = c(4
   )
 
   if (color_palette == "fhi") {
-    colors <- fhiplot::vals$pals$map_seq_complete_5
+    colors <- vals$pals$map_seq_complete_5
   } else {
     colors <- c("#00586E", "#276B81", "#5793A7", "#43B3CE", "#8DCFE4")
   }

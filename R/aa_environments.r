@@ -1,5 +1,4 @@
 #' Colors
-#' @export vals
 vals <- new.env()
 
 vals$cols <- list()
