@@ -10,7 +10,12 @@ Depends: R (>= 3.3.0)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
-Imports: ggplot2, data.table, stringr, glue, scales, huxtable
+Imports: ggplot2, 
+    data.table, 
+    stringr, 
+    glue, 
+    scales, 
+    huxtable
 Suggests: testthat,
     knitr,
     rmarkdown,

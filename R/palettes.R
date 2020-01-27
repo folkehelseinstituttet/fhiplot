@@ -28,7 +28,7 @@ fhi_pal <- function(palette = "primary", direction = 1) {
 #' @param direction as
 #' @param ... as
 #' @export
-scale_color_fhi <- scale_colour_fhi <- function(..., palette = "dis_primary", direction = 1) {
+scale_color_fhi <- scale_colour_fhi <- function(..., palette = "primary", direction = 1) {
   pal <- fhi_pal(palette = palette, direction = direction)
 
   ggplot2::discrete_scale("colour", paste0("fhi_", palette), palette = pal, ...)
@@ -40,7 +40,7 @@ scale_color_fhi <- scale_colour_fhi <- function(..., palette = "dis_primary", di
 #' @param direction a
 #' @param ... a
 #' @export
-scale_fill_fhi <- function(..., palette = "dis_primary", direction = 1) {
+scale_fill_fhi <- function(..., palette = "primary", direction = 1) {
   pal <- fhi_pal(palette = palette, direction = direction)
 
   ggplot2::discrete_scale("fill", paste0("fhi_", palette), palette = pal, ...)
@@ -62,7 +62,7 @@ Display_All_Palettes <- function() {
 
   for (i in seq_along(tags)) {
     p <- stringr::str_subset(rev(names(vals$pals)), glue::glue("^{tags[i]}"))[1]
-    to_plot[[i]] <- data.table(pal = stringr::str_remove(p, "_[0-9]$"), vals$pals[[p]], names(vals$pals[[p]]))
+    to_plot[[i]] <- data.table(pal = stringr::str_remove(p, "_[0-9]+$"), vals$pals[[p]], names(vals$pals[[p]]))
     to_plot[[i]][, x := 1:.N]
   }
   to_plot <- rbindlist(to_plot)
