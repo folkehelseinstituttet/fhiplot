@@ -126,7 +126,7 @@ print(w)
 Daily epicurve for `county01`
 
 ```{r}
-p <- ggplot(d[location_code=="county01"], aes(x = date, y = N))
+p <- ggplot(d[location_code=="county03"], aes(x = date, y = N))
 p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
 p <- p + scale_x_date("Date")
 p <- p + scale_y_continuous("Number of reported cases",
@@ -142,7 +142,7 @@ p
 Weekly epicurve for `county01`
 
 ```{r}
-p <- ggplot(w[location_code=="county01"], aes(x = isoyearweek, y = N))
+p <- ggplot(w[location_code=="county03"], aes(x = isoyearweek, y = N))
 p <- p + geom_col(fill = fhiplot::base_color, width = 0.8)
 p <- p + scale_x_discrete("Isoweek")
 p <- p + scale_y_continuous("Number of reported cases",
