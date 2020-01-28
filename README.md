@@ -2,27 +2,31 @@
 
 This repo contains the functions of the `fhiplot` package, which once installed locally, provides helpful functions for creating and exporting graphics made in ggplot in the style used by the Norwegian Institute of Public Health.
 
-# Installation
+## fhiverse
 
-You should include Folkehelseinstituttet's drat repository as a default option for your computer. You can do this by installing the package `usethis` and then running the command:
+The `fhiverse` is a set of R packages developed by the Norwegian Institute of Public Health to help solve problems relating to:
 
-```
-usethis::edit_r_profile()
-```
+- structural data in Norway (e.g. maps, population, redistricting)
+- convenience functions for Norwegian researchers (e.g. Norwgian formatting, Norwegian characters)
+- analysis planning (especially for making graphs/tables for reports)
+- file structures in projects
+- styleguides/recommendations for FHI employees
 
-This will open a document called `.Rprofile`. Inside this document you will enter:
-
-```
-options(
-  repos = c(
-    folkehelseinstituttet = "https://folkehelseinstituttet.github.io/drat/",
-    CRAN = "https://cran.rstudio.com/"
-  )
-)
-```
-
-You will then save this file, close it, and restart RStudio. You can now install all FHI packages in the normal manner:
+If you want to install the dev versions (or access packages that haven't been released on CRAN), run `usethis::edit_r_profile()` to edit your `.Rprofile`. Then write in:
 
 ```
-install.package("fhiplot")
+options(repos=structure(c(
+  FHI="https://folkehelseinstituttet.github.io/drat/",
+  CRAN="https://cran.rstudio.com"
+)))
 ```
+
+Save the file and restart R. This will allow you to install `fhiverse` packages from the FHI registry.
+
+Current `fhiverse` packages are:
+
+- [spread](https://folkehelseinstituttet.github.io/spread)
+- [fhidata](https://folkehelseinstituttet.github.io/fhi)
+- [fhiplot](https://folkehelseinstituttet.github.io/fhi)
+- [plnr](https://folkehelseinstituttet.github.io/fhi)
+- [fhi](https://folkehelseinstituttet.github.io/fhi)
