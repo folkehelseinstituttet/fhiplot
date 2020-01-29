@@ -4,8 +4,8 @@
 #' @param sig Number of significant digits (optional)
 #' @export
 format_nor <- function(x, digits = 0, sig = NULL) {
-  if(!is.null(sig)){
-    return(formatC(signif(x, digits=sig), big.mark = ".", decimal.mark = ",", format = "f", digits = digits))
+  if (!is.null(sig)) {
+    return(formatC(signif(x, digits = sig), big.mark = ".", decimal.mark = ",", format = "f", digits = digits))
   } else {
     return(formatC(x, big.mark = ".", decimal.mark = ",", format = "f", digits = digits))
   }
