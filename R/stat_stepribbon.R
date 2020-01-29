@@ -1,8 +1,3 @@
-
-#' Internal function
-#' @param data a
-#' @param direction a
-#' @param yvars a
 stairstepn <- function(data, direction = "hv", yvars = "y") {
   direction <- match.arg(direction, c("hv", "vh"))
   data <- as.data.frame(data)[ order(data$x), ]
@@ -23,8 +18,6 @@ stairstepn <- function(data, direction = "hv", yvars = "y") {
   )
 }
 
-#' StatStepribbon
-#' @import ggplot2
 StatStepribbon <-
   ggproto("stepribbon", Stat,
     compute_group = function(., data, scales, direction = "hv", yvars = c("ymin", "ymax"), ...) {

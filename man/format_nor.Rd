@@ -4,12 +4,14 @@
 \alias{format_nor}
 \title{format_nor}
 \usage{
-format_nor(x, digits = 0)
+format_nor(x, digits = 0, sig = NULL)
 }
 \arguments{
 \item{x}{value}
 
-\item{digits}{digits}
+\item{digits}{Number of digits after the decimal place (required)}
+
+\item{sig}{Number of significant digits (optional)}
 }
 \description{
 format_nor

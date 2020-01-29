@@ -1,7 +1,3 @@
-#' Internal function
-#' @param breaksDF a
-#' @param limits a
-#' @param weekNumbers a
 DateBreaks <- function(breaksDF, limits, weekNumbers) {
   if (weekNumbers) {
     if (as.numeric(difftime(limits[2], limits[1], "days")) / 7 < 52 * 0.5) {

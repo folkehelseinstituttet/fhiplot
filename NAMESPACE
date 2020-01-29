@@ -3,7 +3,6 @@
 export(base_color)
 export(colors)
 export(display_all_palettes)
-export(fhi_pal)
 export(format_nor)
 export(geom_stepribbon)
 export(huxtable_theme_fhi_basic)
