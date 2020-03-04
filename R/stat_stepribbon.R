@@ -1,20 +1,20 @@
 stairstepn <- function(data, direction = "hv", yvars = "y") {
   direction <- match.arg(direction, c("hv", "vh"))
-  data <- as.data.frame(data)[ order(data$x), ]
+  data <- as.data.frame(data)[order(data$x), ]
   n <- nrow(data)
 
   if (direction == "vh") {
-    xs <- rep(1:n, each = 2)[ -2 * n ]
+    xs <- rep(1:n, each = 2)[-2 * n]
     ys <- c(1, rep(2:n, each = 2))
   } else {
-    ys <- rep(1:n, each = 2)[ -2 * n ]
+    ys <- rep(1:n, each = 2)[-2 * n]
     xs <- c(1, rep(2:n, each = 2))
   }
 
   data.frame(
     x =
-      data$x[ xs ],
-    data[ ys, yvars, drop = FALSE ], data[ xs, setdiff(names(data), c("x", yvars)), drop = FALSE ]
+      data$x[xs],
+    data[ys, yvars, drop = FALSE], data[xs, setdiff(names(data), c("x", yvars)), drop = FALSE]
   )
 }
 
