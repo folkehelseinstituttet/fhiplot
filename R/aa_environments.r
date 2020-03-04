@@ -79,17 +79,31 @@ vals <- new.env()
 vals$pals <- list()
 
 vals$pals$map_seq_complete_1 <- colors$v2$map_sequential[1]
-vals$pals$map_seq_complete_2 <- colors$v2$map_sequential[c(1, 5)]
-vals$pals$map_seq_complete_3 <- colors$v2$map_sequential[c(1, 3, 5)]
-vals$pals$map_seq_complete_4 <- colors$v2$map_sequential[c(1, 2, 4, 5)]
+vals$pals$map_seq_complete_2 <- colors$v2$map_sequential[c(1, 4)]
+vals$pals$map_seq_complete_3 <- colors$v2$map_sequential[c(1, 3, 4)]
+vals$pals$map_seq_complete_4 <- colors$v2$map_sequential[c(1, 2, 3, 4)]
 vals$pals$map_seq_complete_5 <- colors$v2$map_sequential[c(1, 2, 3, 4, 5)]
 
 vals$pals$map_seq_missing_1 <- colors$v2$primary["H7"]
 vals$pals$map_seq_missing_2 <- c(colors$v2$map_sequential[1], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_3 <- c(colors$v2$map_sequential[c(1, 5)], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_4 <- c(colors$v2$map_sequential[c(1, 3, 5)], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_5 <- c(colors$v2$map_sequential[c(1, 2, 4, 5)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$primary["H7"])
 vals$pals$map_seq_missing_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$primary["H7"])
+
+vals$pals$map_seq_missing_yellow_1 <- colors$v2$primary["H7"]
+vals$pals$map_seq_missing_yellow_2 <- c(colors$v2$map_sequential[1], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_yellow_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_yellow_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_yellow_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_yellow_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$primary["H7"])
+
+vals$pals$map_seq_missing_gray_1 <- colors$v2$neutral["S3"]
+vals$pals$map_seq_missing_gray_2 <- c(colors$v2$map_sequential[1], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_gray_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_gray_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_gray_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_gray_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$neutral["S3"])
 
 vals$pals$map_div_complete_1 <- c(
   colors$v2$map_sequential["MS1"]
@@ -248,6 +262,8 @@ vals$pals$combination_5 <- c(
 )
 
 vals$palettes <- c(
+  "map_seq_missing_gray",
+  "map_seq_missing_yellow",
   "map_seq_complete",
   "map_seq_missing",
   "map_div_complete",

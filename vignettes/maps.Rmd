@@ -31,13 +31,13 @@ pd <- fhidata::norway_map_counties_b2020
 
 # create some fictional data
 data <- unique(pd[,c("location_code")])
-suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)[1:.N]])
+suppressWarnings(data[,category:=rep(c("High","Medium","Low"),each=5)[1:.N]])
 data[,category_with_missing:=category]
 data[1,category_with_missing:="Missing"]
-data[,category:=factor(category,levels=c("Good","Normal","Neutral","Bad","Very Bad"))]
-data[,category_with_missing:=factor(category_with_missing,levels=c("Good","Normal","Neutral","Bad","Very Bad","Missing"))]
-data[location_code == "county54", category:='Very Bad']
-data[location_code == "county54", category_with_missing:='Very Bad']
+data[,category:=factor(category,levels=c("High","Medium","Low"))]
+data[,category_with_missing:=factor(category_with_missing,levels=c("High","Medium","Low","Missing"))]
+data[location_code == "county54", category:='Low']
+data[location_code == "county54", category_with_missing:='Low']
 
 # merge the data into the map
 pd[data,on="location_code",category:=category]
@@ -54,7 +54,7 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black")
 q <- q + theme_void()
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_complete", direction = 1, drop=F)
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_complete", direction = 1, drop=F)
 q <- q + labs(title = "Norwegian counties with 2020 borders")
 q
 ```
@@ -66,75 +66,23 @@ library(ggplot2)
 library(fhiplot)
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black")
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
 q <- q + theme_void()
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_missing", direction = 1, drop=F)
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing_yellow", direction = 1, drop=F)
 q <- q + labs(title = "Norwegian counties with 2020 borders")
 q
 ```
-
-## Maps with inset for Oslo and Akershus
-
-If we use use the map `fhidata::norway_map_counties_with_insert_b2020` then we automatically get an enlarged insert for Oslo:
-
-```{r}
-# start off with base map
-pd <- fhidata::norway_map_counties_with_insert_b2020
-
-# create some fictional data
-data <- unique(pd[,c("location_code")])
-suppressWarnings(data[,category:=rep(c("Good","Normal","Neutral","Bad","Very Bad"),each=4)[1:.N]])
-data[,category_with_missing:=category]
-data[1,category_with_missing:="Missing"]
-data[,category:=factor(category,levels=c("Good","Normal","Neutral","Bad","Very Bad"))]
-data[,category_with_missing:=factor(category_with_missing,levels=c("Good","Normal","Neutral","Bad","Very Bad","Missing"))]
-data[location_code == "county54", category:='Very Bad']
-data[location_code == "county54", category_with_missing:='Very Bad']
-
-# merge the data into the map
-pd[data,on="location_code",category:=category]
-pd[data,on="location_code",category_with_missing:=category_with_missing]
-```
-
-If your data does not contain any missing, then we recommend to use the `_complete` map palettes:
 
 ```{r fig.height=7, fig.width=7}
 library(ggplot2)
 library(fhiplot)
 
 q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black")
-q <- q + annotate(
-  "text", 
-  x = fhidata::norway_map_insert_title_position_b2020$long, 
-  y = fhidata::norway_map_insert_title_position_b2020$lat,
-  label = "Oslo"
-  )
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
 q <- q + theme_void()
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_complete", direction = 1, drop=F)
-q <- q + labs(title = "Norwegian counties with 2020 borders")
-q
-```
-
-If your data does contain missing, then we recommend to use the `_missing` map palettes:
-
-```{r fig.height=7, fig.width=7}
-library(ggplot2)
-library(fhiplot)
-
-q <- ggplot()
-q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black")
-q <- q + annotate(
-  "text", 
-  x = fhidata::norway_map_insert_title_position_b2020$long, 
-  y = fhidata::norway_map_insert_title_position_b2020$lat,
-  label = "Oslo"
-  )
-q <- q + theme_void()
-q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_div_missing", direction = 1, drop=F)
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing_gray", direction = 1, drop=F)
 q <- q + labs(title = "Norwegian counties with 2020 borders")
 q
 ```
