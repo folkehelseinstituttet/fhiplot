@@ -57,7 +57,7 @@ display_all_palettes <- function() {
   to_plot <- vector("list", length = length(tags))
 
   for (i in seq_along(tags)) {
-    p <- stringr::str_subset(rev(names(vals$pals)), glue::glue("^{tags[i]}"))[1]
+    p <- stringr::str_subset(rev(names(vals$pals)), glue::glue("^{tags[i]}_[0-9]+$"))[1]
     to_plot[[i]] <- data.table(pal = stringr::str_remove(p, "_[0-9]+$"), vals$pals[[p]], names(vals$pals[[p]]))
     to_plot[[i]][, x := 1:.N]
   }

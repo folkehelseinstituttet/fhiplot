@@ -78,6 +78,8 @@ colors$v1$map_divergent <- c(
 vals <- new.env()
 vals$pals <- list()
 
+# main sequential maps
+
 vals$pals$map_seq_complete_1 <- colors$v2$map_sequential[1]
 vals$pals$map_seq_complete_2 <- colors$v2$map_sequential[c(1, 4)]
 vals$pals$map_seq_complete_3 <- colors$v2$map_sequential[c(1, 3, 4)]
@@ -91,19 +93,33 @@ vals$pals$map_seq_missing_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2
 vals$pals$map_seq_missing_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$primary["H7"])
 vals$pals$map_seq_missing_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$primary["H7"])
 
-vals$pals$map_seq_missing_yellow_1 <- colors$v2$primary["H7"]
-vals$pals$map_seq_missing_yellow_2 <- c(colors$v2$map_sequential[1], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_yellow_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_yellow_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_yellow_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$primary["H7"])
-vals$pals$map_seq_missing_yellow_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$primary["H7"])
+vals$pals$map_seq_missing_x2_1 <- colors$v2$neutral["S3"]
+vals$pals$map_seq_missing_x2_2 <- c(colors$v2$map_sequential[1], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_x2_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_x2_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_x2_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_missing_x2_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$neutral["S3"])
 
-vals$pals$map_seq_missing_gray_1 <- colors$v2$neutral["S3"]
-vals$pals$map_seq_missing_gray_2 <- c(colors$v2$map_sequential[1], colors$v2$neutral["S3"])
-vals$pals$map_seq_missing_gray_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$neutral["S3"])
-vals$pals$map_seq_missing_gray_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$neutral["S3"])
-vals$pals$map_seq_missing_gray_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$neutral["S3"])
-vals$pals$map_seq_missing_gray_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$neutral["S3"])
+# secondary sequantial maps
+
+vals$pals$map_seq_x2_complete_1 <- colors$v2$map_divergent[1]
+vals$pals$map_seq_x2_complete_2 <- colors$v2$map_divergent[c(1, 4)]
+vals$pals$map_seq_x2_complete_3 <- colors$v2$map_divergent[c(1, 3, 4)]
+vals$pals$map_seq_x2_complete_4 <- colors$v2$map_divergent[c(1, 2, 3, 4)]
+
+vals$pals$map_seq_x2_missing_1 <- colors$v2$primary["H7"]
+vals$pals$map_seq_x2_missing_2 <- c(colors$v2$map_divergent[1], colors$v2$primary["H7"])
+vals$pals$map_seq_x2_missing_3 <- c(colors$v2$map_divergent[c(1, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_x2_missing_4 <- c(colors$v2$map_divergent[c(1, 3, 4)], colors$v2$primary["H7"])
+vals$pals$map_seq_x2_missing_5 <- c(colors$v2$map_divergent[c(1, 2, 3, 4)], colors$v2$primary["H7"])
+
+vals$pals$map_seq_x2_missing_x2_1 <- colors$v2$neutral["S3"]
+vals$pals$map_seq_x2_missing_x2_2 <- c(colors$v2$map_divergent[1], colors$v2$neutral["S3"])
+vals$pals$map_seq_x2_missing_x2_3 <- c(colors$v2$map_divergent[c(1, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_x2_missing_x2_4 <- c(colors$v2$map_divergent[c(1, 3, 4)], colors$v2$neutral["S3"])
+vals$pals$map_seq_x2_missing_x2_5 <- c(colors$v2$map_divergent[c(1, 2, 3, 4)], colors$v2$neutral["S3"])
+
+# divergent maps
 
 vals$pals$map_div_complete_1 <- c(
   colors$v2$map_sequential["MS1"]
@@ -262,8 +278,10 @@ vals$pals$combination_5 <- c(
 )
 
 vals$palettes <- c(
-  "map_seq_missing_gray",
-  "map_seq_missing_yellow",
+  "map_seq_x2_missing_x2",
+  "map_seq_x2_missing",
+  "map_seq_x2_complete",
+  "map_seq_missing_x2",
   "map_seq_complete",
   "map_seq_missing",
   "map_div_complete",

@@ -55,7 +55,20 @@ q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=cat
 q <- q + theme_void()
 q <- q + coord_quickmap()
 q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_complete", direction = 1, drop=F)
-q <- q + labs(title = "Norwegian counties with 2020 borders")
+q <- q + labs(title = "Palette = map_seq_complete")
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(fhiplot)
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category), color="black")
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_x2_complete", direction = 1, drop=F)
+q <- q + labs(title = "Palette = map_seq_x2_complete")
 q
 ```
 
@@ -69,8 +82,8 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
 q <- q + theme_void()
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing_yellow", direction = 1, drop=F)
-q <- q + labs(title = "Norwegian counties with 2020 borders")
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing", direction = 1, drop=F)
+q <- q + labs(title = "Palette = map_seq_missing")
 q
 ```
 
@@ -82,7 +95,33 @@ q <- ggplot()
 q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
 q <- q + theme_void()
 q <- q + coord_quickmap()
-q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing_gray", direction = 1, drop=F)
-q <- q + labs(title = "Norwegian counties with 2020 borders")
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_missing_x2", direction = 1, drop=F)
+q <- q + labs(title = "Palette = map_seq_missing_x2")
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(fhiplot)
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_x2_missing", direction = 1, drop=F)
+q <- q + labs(title = "Palette = map_seq_x2_missing")
+q
+```
+
+```{r fig.height=7, fig.width=7}
+library(ggplot2)
+library(fhiplot)
+
+q <- ggplot()
+q <- q + geom_polygon(data = pd, aes( x = long, y = lat, group = group, fill=category_with_missing), color="black", size=0.2)
+q <- q + theme_void()
+q <- q + coord_quickmap()
+q <- q + fhiplot::scale_fill_fhi("Category",palette = "map_seq_x2_missing_x2", direction = 1, drop=F)
+q <- q + labs(title = "Palette = map_seq_x2_missing_x2")
 q
 ```
