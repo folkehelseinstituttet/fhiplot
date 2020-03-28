@@ -1,3 +1,15 @@
+# fhiplot 2019.3.28
+
+2 new palettes:
+
+- posneg
+- warning
+
+2 new functions:
+
+- format_nor_perc_0
+- format_nor_perc_1
+
 # fhiplot 2019.3.18
 
 Allow more than 9 colors in a palette

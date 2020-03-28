@@ -4,10 +4,22 @@
 \alias{make_line_excess_graph}
 \title{make_line_excess_graph}
 \usage{
-make_line_excess_graph(pd, x, dataVal, dataZ, dataCIL = NULL,
-  dataCIU = NULL, allPoints = TRUE, title = NULL, pointShift = 0,
-  xShift = 0, weekNumbers = FALSE, step = FALSE, GetCols,
-  legend_position = "right")
+make_line_excess_graph(
+  pd,
+  x,
+  dataVal,
+  dataZ,
+  dataCIL = NULL,
+  dataCIU = NULL,
+  allPoints = TRUE,
+  title = NULL,
+  pointShift = 0,
+  xShift = 0,
+  weekNumbers = FALSE,
+  step = FALSE,
+  GetCols,
+  legend_position = "right"
+)
 }
 \arguments{
 \item{pd}{a}

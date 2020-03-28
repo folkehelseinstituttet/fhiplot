@@ -4,7 +4,9 @@
 \name{warning_color}
 \alias{warning_color}
 \title{Warning color}
-\format{An object of class \code{character} of length 3.}
+\format{
+An object of class \code{character} of length 3.
+}
 \usage{
 warning_color
 }

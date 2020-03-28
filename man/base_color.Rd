@@ -4,7 +4,9 @@
 \name{base_color}
 \alias{base_color}
 \title{Base color}
-\format{An object of class \code{character} of length 1.}
+\format{
+An object of class \code{character} of length 1.
+}
 \usage{
 base_color
 }

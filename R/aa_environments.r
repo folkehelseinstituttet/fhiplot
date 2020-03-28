@@ -225,6 +225,19 @@ vals$pals$primary_11 <- c(
   colors$v2$neutral["S2"]
 )
 
+# warning - low medium high
+vals$pals$warning_3 <- c(
+  colors$v2$primary["H3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H6"]
+)
+
+# posneg - yes-no
+vals$pals$posneg_2 <- c(
+  colors$v2$primary["H3"],
+  colors$v2$primary["H6"]
+)
+
 vals$pals$contrast_1 <- c(
   colors$v1$primary["B2"]
 )
@@ -288,6 +301,8 @@ vals$palettes <- c(
   "map_div_missing",
   "contrast",
   "combination",
+  "posneg",
+  "warning",
   "primary"
 )
 

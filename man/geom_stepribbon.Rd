@@ -5,8 +5,14 @@
 \title{stat_stepribbon
 An extension of ggplot2's geom_ribbon}
 \usage{
-geom_stepribbon(mapping = NULL, data = NULL, geom = "ribbon",
-  position = "identity", inherit.aes = TRUE, ...)
+geom_stepribbon(
+  mapping = NULL,
+  data = NULL,
+  geom = "ribbon",
+  position = "identity",
+  inherit.aes = TRUE,
+  ...
+)
 }
 \arguments{
 \item{mapping}{Mapping}

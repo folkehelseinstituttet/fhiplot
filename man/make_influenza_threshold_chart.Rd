@@ -4,8 +4,14 @@
 \alias{make_influenza_threshold_chart}
 \title{A treshold chart of the type used for influenza}
 \usage{
-make_influenza_threshold_chart(data, title, lang = "NB", weeks = c(40,
-  20), color_palette = "fhi", legend_control = "legend")
+make_influenza_threshold_chart(
+  data,
+  title,
+  lang = "NB",
+  weeks = c(40, 20),
+  color_palette = "fhi",
+  legend_control = "legend"
+)
 }
 \arguments{
 \item{data}{A data.table for a season of influenza}

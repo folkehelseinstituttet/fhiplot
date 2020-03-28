@@ -4,9 +4,13 @@
 \alias{theme_fhi_basic}
 \title{theme_fhi_basic}
 \usage{
-theme_fhi_basic(base_size = 12, base_family = "",
-  base_line_size = base_size/22, base_rect_size = base_size/22,
-  legend_position = "right")
+theme_fhi_basic(
+  base_size = 12,
+  base_family = "",
+  base_line_size = base_size/22,
+  base_rect_size = base_size/22,
+  legend_position = "right"
+)
 }
 \arguments{
 \item{base_size}{a}

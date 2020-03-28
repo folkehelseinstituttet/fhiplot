@@ -23,6 +23,6 @@ Suggests: testthat,
     lubridate,
     lemon,
     fhi
-RoxygenNote: 6.1.1
+RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Additional_repositories: https://folkehelseinstituttet.github.io/drat/, https://raubreywhite.github.io/drat/, https://euromomonetwork.github.io/drat/

@@ -4,10 +4,25 @@
 \alias{make_line_threshold_plot}
 \title{Creates a line threshold plot}
 \usage{
-make_line_threshold_plot(pd, x, dataVal, dataCIL = NULL,
-  dataCIU = NULL, L1, L2, L3, L4, allPoints = TRUE, title = NULL,
-  pointShift = 0, xShift = 0, weekNumbers = FALSE, step = FALSE,
-  GetCols, legend_position = "right")
+make_line_threshold_plot(
+  pd,
+  x,
+  dataVal,
+  dataCIL = NULL,
+  dataCIU = NULL,
+  L1,
+  L2,
+  L3,
+  L4,
+  allPoints = TRUE,
+  title = NULL,
+  pointShift = 0,
+  xShift = 0,
+  weekNumbers = FALSE,
+  step = FALSE,
+  GetCols,
+  legend_position = "right"
+)
 }
 \arguments{
 \item{pd}{A data.frame}
