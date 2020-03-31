@@ -5,7 +5,8 @@ fhi_pal <- function(palette = "primary", direction = 1) {
 
   function(n) {
     pal_names <- stringr::str_subset(names(vals$pals), glue::glue("^{palette}_[0-9]+$"))
-    if (n > length(pal_names)) stop(glue::glue("Max {length(pal_names)} levels allowed for {palette}"))
+    nums_available <- stringr::str_remove(pal_names, paste0(palette,"_"))
+    if (!n %in% nums_available) stop(glue::glue("Only {paste0(nums_available, collapse=', ')} levels allowed for {palette}"))
 
     pal <- vals$pals[[glue::glue("{palette}_{n}")]]
     if (direction == -1) {

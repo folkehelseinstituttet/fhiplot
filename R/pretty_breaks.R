@@ -37,4 +37,5 @@ format_nor_perc_0 <- function(x) paste0(fhiplot::format_nor(x, digits = 0), "%")
 #' Formats as a norwegian number with 1 digits and puts a % sign afterwards.
 #' Useful for scale labels
 #' @param x value
+#' @export
 format_nor_perc_1 <- function(x) paste0(fhiplot::format_nor(x, digits = 1), "%")
