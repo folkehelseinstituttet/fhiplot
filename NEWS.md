@@ -1,3 +1,8 @@
+# fhiplot 2019.5.8
+
+- fixed format_nor, huxtable, palette order
+- included format_date_nor, theme_fhi_lines_horizontal
+
 # fhiplot 2019.3.28
 
 2 new palettes:

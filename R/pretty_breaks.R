@@ -1,3 +1,18 @@
+#' fhi_caption
+#' @param caption text
+#' @export
+fhi_caption <- function(caption = "Folkehelseinstituttet {format_date_nor()}") {
+  return(glue::glue(caption))
+}
+
+#' format_date_nor
+#' @param x value
+#' @export
+format_date_nor <- function(x = lubridate::today(), format = "%d.%m.%Y") {
+  retval <- format.Date(x, format = format)
+  return(retval)
+}
+
 #' format_nor
 #' @param x value
 #' @param digits Number of digits after the decimal place (required)
@@ -5,10 +20,13 @@
 #' @export
 format_nor <- function(x, digits = 0, sig = NULL) {
   if (!is.null(sig)) {
-    return(formatC(signif(x, digits = sig), big.mark = ".", decimal.mark = ",", format = "f", digits = digits))
+    retval <- formatC(signif(x, digits = sig), big.mark = " ", decimal.mark = ",", format = "f", digits = digits)
   } else {
-    return(formatC(x, big.mark = ".", decimal.mark = ",", format = "f", digits = digits))
+    retval <- formatC(x, big.mark = " ", decimal.mark = ",", format = "f", digits = digits)
   }
+  index <- which(x >= 1000 & x < 10000)
+  if(length(index)>0) retval[index] <- stringr::str_remove(retval[index], " ")
+  return(retval)
 }
 
 #' pretty_breaks

@@ -182,7 +182,7 @@ vals$pals$map_div_missing_6 <- c(
 )
 
 vals$pals$primary_1 <- c(
-  colors$v2$primary["H2"]
+  colors$v2$primary["H1"]
 )
 vals$pals$primary_2 <- c(
   vals$pals$primary_1,
@@ -190,7 +190,7 @@ vals$pals$primary_2 <- c(
 )
 vals$pals$primary_3 <- c(
   vals$pals$primary_2,
-  colors$v2$primary["H1"]
+  colors$v2$primary["H2"]
 )
 vals$pals$primary_4 <- c(
   vals$pals$primary_3,
@@ -233,6 +233,10 @@ vals$pals$warning_3 <- c(
 )
 
 # posneg - yes-no
+vals$pals$posneg_1 <- c(
+  colors$v2$primary["H6"]
+)
+
 vals$pals$posneg_2 <- c(
   colors$v2$primary["H3"],
   colors$v2$primary["H6"]
@@ -308,7 +312,7 @@ vals$palettes <- c(
 
 #' Base color
 #' @export base_color
-base_color <- colors$v2$neutral["S1"]
+base_color <- colors$v2$primary["H1"]
 
 #' Warning color
 #' @export warning_color
