@@ -7,6 +7,7 @@ fhi_caption <- function(caption = "Folkehelseinstituttet {format_date_nor()}") {
 
 #' format_date_nor
 #' @param x value
+#' @param format the desired format
 #' @export
 format_date_nor <- function(x = lubridate::today(), format = "%d.%m.%Y") {
   retval <- format.Date(x, format = format)
