@@ -8,6 +8,8 @@ format_date_nor(x = lubridate::today(), format = "\%d.\%m.\%Y")
 }
 \arguments{
 \item{x}{value}
+
+\item{format}{the desired format}
 }
 \description{
 format_date_nor
