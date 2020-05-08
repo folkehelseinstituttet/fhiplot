@@ -26,7 +26,7 @@ format_nor <- function(x, digits = 0, sig = NULL) {
     retval <- formatC(x, big.mark = " ", decimal.mark = ",", format = "f", digits = digits)
   }
   index <- which(x >= 1000 & x < 10000)
-  if(length(index)>0) retval[index] <- stringr::str_remove(retval[index], " ")
+  if (length(index) > 0) retval[index] <- stringr::str_remove(retval[index], " ")
   return(retval)
 }
 
