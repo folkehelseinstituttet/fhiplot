@@ -3,6 +3,7 @@
 export(base_color)
 export(colors)
 export(display_all_palettes)
+export(every_nth)
 export(fhi_caption)
 export(format_date_nor)
 export(format_nor)
