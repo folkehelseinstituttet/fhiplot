@@ -18,29 +18,33 @@ format_date_nor <- function(x = lubridate::today(), format = "%d.%m.%Y") {
 #' @param x value
 #' @param digits Number of digits after the decimal place (required)
 #' @param sig Number of significant digits (optional)
+#' @param break_with_four_digits Whether break with four digits. Default is TRUE (optional)
 #' @export
-format_nor <- function(x, digits = 0, sig = NULL) {
+format_nor <- function(x, digits = 0, sig = NULL, break_with_four_digits = T) {
   if (!is.null(sig)) {
     retval <- formatC(signif(x, digits = sig), big.mark = " ", decimal.mark = ",", format = "f", digits = digits)
   } else {
     retval <- formatC(x, big.mark = " ", decimal.mark = ",", format = "f", digits = digits)
   }
   index <- which(x >= 1000 & x < 10000)
-  if (length(index) > 0) retval[index] <- stringr::str_remove(retval[index], " ")
+  if (length(index) > 0 & break_with_four_digits == F) retval[index] <- stringr::str_remove(retval[index], " ")
   return(retval)
 }
 
 #' pretty_breaks
 #' @param n a
 #' @param digits number of decimal places
+#' @param break_with_four_digits Whether break with four digits. Default is TRUE (optional)
 #' @param ... dots
 #' @export
-pretty_breaks <- function(n = 5, digits = 0, ...) {
+pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
   force_all(n, ...)
   n_default <- n
   function(x, n = n_default) {
     breaks <- pretty(x, n, ...)
-    names(breaks) <- format_nor(breaks, digits = digits)
+    names(breaks) <- format_nor(breaks,
+                                digits = digits,
+                                break_with_four_digits = break_with_four_digits)
     breaks
   }
 }

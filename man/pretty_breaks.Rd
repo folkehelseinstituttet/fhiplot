@@ -4,12 +4,14 @@
 \alias{pretty_breaks}
 \title{pretty_breaks}
 \usage{
-pretty_breaks(n = 5, digits = 0, ...)
+pretty_breaks(n = 5, digits = 0, break_with_four_digits = T, ...)
 }
 \arguments{
 \item{n}{a}
 
 \item{digits}{number of decimal places}
+
+\item{break_with_four_digits}{Whether break with four digits. Default is TRUE (optional)}
 
 \item{...}{dots}
 }
