@@ -9,6 +9,9 @@
 every_nth <- function(n) {
   force(n)
   return(function(x) {
-    x[c(TRUE, rep(FALSE, n - 1))]
+    # old:  x[c(TRUE, rep(FALSE, n - 1))]: prints T,F,F, T,F,F
+    # alt1: x[c(rep(FALSE, n - 1), TRUE)]: this also prints F,F,T, F,F,T
+    rev(rev(x)[c(TRUE, rep(FALSE, n - 1))])  # prints c(2,5)
   })
 }
+
