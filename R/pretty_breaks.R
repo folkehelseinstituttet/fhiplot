@@ -38,7 +38,7 @@ format_nor <- function(x, digits = 0, sig = NULL, break_with_four_digits = T) {
 #' @param ... dots
 #' @export
 pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
-  force_all(n, ...)
+  force_all(n, digits, break_with_four_digits, ...)
   n_default <- n
   function(x, n = n_default) {
     breaks <- pretty(x, n, ...)
