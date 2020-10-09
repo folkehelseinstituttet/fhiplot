@@ -43,8 +43,9 @@ pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
   function(x, n = n_default) {
     breaks <- pretty(x, n, ...)
     names(breaks) <- format_nor(breaks,
-                                digits = digits,
-                                break_with_four_digits = break_with_four_digits)
+      digits = digits,
+      break_with_four_digits = break_with_four_digits
+    )
     breaks
   }
 }

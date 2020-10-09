@@ -1,6 +1,6 @@
 Package: fhiplot
 Title: Graphs For 'ggplot2' In The Style Of FHI 
-Version: 2020.10.07
+Version: 2020.10.9
 Authors@R: c(
   person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
   person("Gunnar", "Ro", email = "gunr@fhi.no", role = c("aut")),
