@@ -4,7 +4,7 @@
 \alias{format_nor}
 \title{format_nor}
 \usage{
-format_nor(x, digits = 0, sig = NULL)
+format_nor(x, digits = 0, sig = NULL, break_with_four_digits = T)
 }
 \arguments{
 \item{x}{value}
@@ -12,6 +12,8 @@ format_nor(x, digits = 0, sig = NULL)
 \item{digits}{Number of digits after the decimal place (required)}
 
 \item{sig}{Number of significant digits (optional)}
+
+\item{break_with_four_digits}{Whether break with four digits. Default is TRUE (optional)}
 }
 \description{
 format_nor

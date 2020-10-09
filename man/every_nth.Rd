@@ -15,5 +15,7 @@ every_nth
 Useful for plotting every nth discrete value in ggplot2
 }
 \examples{
-\dontrun{scale_x_discrete(NULL, breaks = every_nth(n=2))}
+\dontrun{
+scale_x_discrete(NULL, breaks = every_nth(n = 2))
+}
 }
