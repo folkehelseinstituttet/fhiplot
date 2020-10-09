@@ -1,6 +1,13 @@
 language: r
 cache:
 - packages
+
+addons:
+  apt:
+    packages:
+      - libharfbuzz-dev
+      - libfribidi-dev
+
 r_packages:
 - drat
 - styler
