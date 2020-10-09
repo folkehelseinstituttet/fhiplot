@@ -3,7 +3,6 @@ cache:
 - packages
 r_packages:
 - drat
-- pkgdown
 - styler
 - devtools
 
