@@ -26,7 +26,15 @@ Save the file and restart R. This will allow you to install `fhiverse` packages 
 Current `fhiverse` packages are:
 
 - [spread](https://folkehelseinstituttet.github.io/spread)
-- [fhidata](https://folkehelseinstituttet.github.io/fhi)
-- [fhiplot](https://folkehelseinstituttet.github.io/fhi)
-- [plnr](https://folkehelseinstituttet.github.io/fhi)
+- [fhidata](https://folkehelseinstituttet.github.io/fhidata)
+- [fhiplot](https://folkehelseinstituttet.github.io/fhiplot)
+- [plnr](https://folkehelseinstituttet.github.io/plnr)
 - [fhi](https://folkehelseinstituttet.github.io/fhi)
+
+## Notes
+
+```
+usethis::use_pkgdown()
+usethis::use_pkgdown_travis()
+travis::use_travis_deploy()
+```
