@@ -6,8 +6,8 @@ r_packages:
 - styler
 - devtools
 
-before_cache: Rscript -e 'remotes::install_cran("pkgdown")'
-
+before_cache:
+- Rscript -e 'remotes::install_cran("pkgdown")'
 before_install:
 - bash travis/make.sh
 after_success:
@@ -15,7 +15,8 @@ after_success:
   travis/drat.sh
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   travis/styler.sh
-deploy:
-  provider: script
-  script: Rscript -e 'pkgdown::deploy_site_github()'
-  skip_cleanup: true
+
+# deploy:
+#   provider: script
+#   script: Rscript -e 'pkgdown::deploy_site_github()'
+#   skip_cleanup: true
