@@ -5,6 +5,7 @@ r_packages:
 - drat
 - styler
 - devtools
+- pkgdown
 
 before_cache:
 - Rscript -e 'remotes::install_cran("pkgdown")'
