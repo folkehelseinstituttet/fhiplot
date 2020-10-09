@@ -8,3 +8,6 @@ deploy.sh
 make.sh
 cran-comments.md
 ^.*\.Rcheck
+^_pkgdown\.yml$
+^docs$
+^pkgdown$
