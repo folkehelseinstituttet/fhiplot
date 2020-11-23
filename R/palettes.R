@@ -1,5 +1,8 @@
-# Main colour extractor
-# https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+#' Main colour extractor
+#' https://drsimonj.svbtle.com/creating-corporate-colour-palettes-for-ggplot2
+#' @param palette as
+#' @param direction as
+#' @export
 fhi_pal <- function(palette = "primary", direction = 1) {
   if (!palette %in% vals$palettes) stop("Palette '{palette}' not in: ", paste0(vals$palettes, collapse = ", "))
 

@@ -19,6 +19,11 @@ colors$v2$neutral <- c(
   "S4" = "#C5D0D4"
 )
 
+# misc
+colors$v2$misc <- c(
+  "M1" = "#ebf4fc"  # lightblue
+)
+
 colors$v2$map_sequential <- c(
   "MS1" = "#045a8d",
   "MS2" = "#467fa9",
@@ -27,12 +32,14 @@ colors$v2$map_sequential <- c(
   "MS5" = "#c5dcdf"
 )
 
+
 colors$v2$map_divergent <- c(
   "MD1" = "#2c6300",
   "MD2" = "#4d7e13",
   "MD3" = "#6d9926",
   "MD4" = "#aed267"
 )
+
 
 colors$v1$primary <- c(
   "B1" = "#393C61",
@@ -99,6 +106,17 @@ vals$pals$map_seq_missing_x2_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2
 vals$pals$map_seq_missing_x2_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$neutral["S3"])
 vals$pals$map_seq_missing_x2_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$neutral["S3"])
 vals$pals$map_seq_missing_x2_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$neutral["S3"])
+
+
+# misc
+
+vals$pals$map_seq_missing_x3_1 <- colors$v2$misc['M1']
+vals$pals$map_seq_missing_x3_2 <- c(colors$v2$map_sequential[1], colors$v2$misc['M1'])
+vals$pals$map_seq_missing_x3_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$misc['M1'])
+vals$pals$map_seq_missing_x3_4 <- c(colors$v2$map_sequential[c(1, 3, 4)], colors$v2$misc['M1'])
+vals$pals$map_seq_missing_x3_5 <- c(colors$v2$map_sequential[c(1, 2, 3, 4)], colors$v2$misc['M1'])
+vals$pals$map_seq_missing_x3_6 <- c(colors$v2$map_sequential[c(1, 2, 3, 4, 5)], colors$v2$misc['M1'])
+
 
 # secondary sequantial maps
 
@@ -298,6 +316,7 @@ vals$palettes <- c(
   "map_seq_x2_missing_x2",
   "map_seq_x2_missing",
   "map_seq_x2_complete",
+  "map_seq_missing_x3",
   "map_seq_missing_x2",
   "map_seq_complete",
   "map_seq_missing",
