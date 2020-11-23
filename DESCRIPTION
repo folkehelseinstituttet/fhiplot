@@ -26,4 +26,4 @@ Suggests: testthat,
     fhi
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
-Additional_repositories: https://folkehelseinstituttet.github.io/drat/, https://raubreywhite.github.io/drat/, https://euromomonetwork.github.io/drat/
+Additional_repositories: https://folkehelseinstituttet.github.io/drat/
