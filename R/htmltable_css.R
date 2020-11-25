@@ -22,6 +22,7 @@ htmltable_css_cell <- function(fontsize = 14, border_bottom = "1px dashed grey")
 #' @param x Risk value
 #' @param fontsize fontsize
 #' @param max_risk_value Max risk value
+#' @export
 htmltable_css_risk_1_5 <- function(x, fontsize = 14, max_risk_value = 5) {
   stopifnot(x %in% 1:5)
   color <- fhi_pal("map_seq_complete", direction = -1)(max_risk_value)[x]
