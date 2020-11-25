@@ -1,6 +1,6 @@
 #' CSS for htmltable table
 #' @export htmltable_css_table
-htmltable_css_table <- function(){
+htmltable_css_table <- function() {
   "width: 100%;"
 }
 
