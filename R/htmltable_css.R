@@ -1,5 +1,5 @@
 #' CSS for htmltable table
-#' @export htmltable_css_table
+#' @export
 htmltable_css_table <- function() {
   "width: 100%;"
 }
@@ -7,7 +7,7 @@ htmltable_css_table <- function() {
 #' CSS for htmltable header
 #' @param fontsize fontsize
 #' @param border_top Border top style
-#' @export htmltable_css_header
+#' @export
 htmltable_css_header <- function(fontsize = 16, border_top = "2px solid grey") {
   retval <- glue::glue("font-size: {fontsize}px; font-weight: bold; border-top: {border_top};")
   retval
@@ -16,6 +16,7 @@ htmltable_css_header <- function(fontsize = 16, border_top = "2px solid grey") {
 #' CSS for htmltable cell
 #' @param fontsize fontsize
 #' @param border_bottom Border bottom style
+#' @export
 htmltable_css_cell <- function(fontsize = 14, border_bottom = "1px dashed grey") {
   retval <- glue::glue("padding-left: .4em; padding-right: .2em; padding-top: .4em; padding-bottom: .4em; font-size: {fontsize}px; border-bottom: {border_bottom};")
 }
