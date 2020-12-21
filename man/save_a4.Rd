@@ -4,7 +4,7 @@
 \alias{save_a4}
 \title{save_a4}
 \usage{
-save_a4(p, filename, landscape = T)
+save_a4(p, filename, landscape = T, scaling_factor = 1)
 }
 \arguments{
 \item{p}{plot}
@@ -12,6 +12,8 @@ save_a4(p, filename, landscape = T)
 \item{filename}{filename}
 
 \item{landscape}{landscape dimensions?}
+
+\item{scaling_factor}{How much larger/smaller than A4?}
 }
 \description{
 save_a4
