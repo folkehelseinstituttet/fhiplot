@@ -9,16 +9,16 @@ save_a4 <- function(p, filename, landscape = T, scaling_factor = 1) {
     ggsave(
       filename,
       plot = p,
-      width = 297*scaling_factor,
-      height = 210*scaling_factor,
+      width = 297 * scaling_factor,
+      height = 210 * scaling_factor,
       units = "mm"
     )
   } else {
     ggsave(
       filename,
       plot = p,
-      width = 210*scaling_factor,
-      height = 297*scaling_factor,
+      width = 210 * scaling_factor,
+      height = 297 * scaling_factor,
       units = "mm"
     )
   }
