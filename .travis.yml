@@ -7,7 +7,7 @@ addons:
     packages:
       - libharfbuzz-dev
       - libfribidi-dev
-      - libgit2
+      - libgit2-dev
 
 r_packages:
 - drat
