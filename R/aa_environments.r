@@ -261,29 +261,46 @@ vals$pals$posneg_2 <- c(
 )
 
 vals$pals$contrast_1 <- c(
-  colors$v1$primary["B2"]
+  colors$v2$primary["H1"]
 )
 vals$pals$contrast_2 <- c(
-  colors$v1$primary["B2"],
-  colors$v1$secondary["R2"]
+  colors$v2$primary["H1"],
+  colors$v2$primary["H5"]
 )
 vals$pals$contrast_3 <- c(
-  colors$v1$primary["B2"],
-  colors$v1$neutral["X4"],
-  colors$v1$secondary["R2"]
+  colors$v2$primary["H1"],
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H5"]
 )
 vals$pals$contrast_4 <- c(
-  colors$v1$primary["B2"],
-  colors$v1$primary["B3"],
-  colors$v1$secondary["R3"],
-  colors$v1$secondary["R2"]
+  colors$v2$primary["H1"],
+  colors$v2$primary["H2"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H5"]
 )
 vals$pals$contrast_5 <- c(
-  colors$v1$primary["B2"],
-  colors$v1$primary["B3"],
-  colors$v1$neutral["X4"],
-  colors$v1$secondary["R3"],
-  colors$v1$secondary["R2"]
+  colors$v2$primary["H1"],
+  colors$v2$primary["H2"],
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H5"]
+)
+vals$pals$contrast_6 <- c(
+  colors$v2$primary["H1"],
+  colors$v2$primary["H2"],
+  colors$v2$primary["H3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H6"],
+  colors$v2$primary["H5"]
+)
+vals$pals$contrast_7 <- c(
+  colors$v2$primary["H1"],
+  colors$v2$primary["H2"],
+  colors$v2$primary["H3"],
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H6"],
+  colors$v2$primary["H5"]
 )
 
 vals$pals$combination_1 <- c(
@@ -322,8 +339,8 @@ vals$palettes <- c(
   "map_seq_missing",
   "map_div_complete",
   "map_div_missing",
-  "contrast",
   "combination",
+  "contrast",
   "posneg",
   "warning",
   "primary"
