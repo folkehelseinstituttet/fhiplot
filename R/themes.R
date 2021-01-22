@@ -188,7 +188,7 @@ theme_fhi_shiny_kht <- function(base_size = 20,
     theme(
       title = element_text(size = base_size * 0.75),
       plot.caption = element_text(hjust = 0, face= "italic"),
-      legend.key.size = unit(1, "cm"),
+      legend.key.size = unit(1.5, "cm"),
       complete = TRUE
     )
 
