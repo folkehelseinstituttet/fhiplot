@@ -190,7 +190,7 @@ theme_fhi_shiny_kht <- function(base_size = 20,
       plot.caption = element_text(hjust = 0, face = "italic"),
       legend.key.size = unit(1.5, "cm"),
       plot.title.position = "plot",
-      plot.caption.position =  "plot",
+      plot.caption.position = "plot",
       complete = TRUE
     )
 
