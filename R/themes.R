@@ -187,6 +187,7 @@ theme_fhi_shiny_kht <- function(base_size = 20,
   ) %+replace%
     theme(
       title = element_text(size = base_size * 0.75),
+      legend.key.size = unit(1, "cm"),
       complete = TRUE
     )
 
