@@ -164,15 +164,15 @@ theme_fhi_lines_horizontal <- function(base_size = 12,
 #' @param panel.grid.minor.y Set to element_blank() to remove
 #' @export
 theme_fhi_shiny_kht <- function(base_size = 20,
-                                       base_family = "",
-                                       base_line_size = base_size / 22,
-                                       base_rect_size = base_size / 22,
-                                       legend_position = "right",
-                                       panel_on_top = TRUE,
-                                       panel.grid.major.x = element_blank(),
-                                       panel.grid.minor.x = element_blank(),
-                                       panel.grid.major.y = element_line(colour = "black", size = rel(0.1)),
-                                       panel.grid.minor.y = element_line(colour = "black", size = rel(0.05))) {
+                                base_family = "",
+                                base_line_size = base_size / 22,
+                                base_rect_size = base_size / 22,
+                                legend_position = "right",
+                                panel_on_top = TRUE,
+                                panel.grid.major.x = element_blank(),
+                                panel.grid.minor.x = element_blank(),
+                                panel.grid.major.y = element_line(colour = "black", size = rel(0.1)),
+                                panel.grid.minor.y = element_line(colour = "black", size = rel(0.05))) {
   retval <- theme_fhi_lines_horizontal(
     base_size = base_size,
     base_family = base_family,
