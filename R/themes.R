@@ -150,3 +150,45 @@ theme_fhi_lines_horizontal <- function(base_size = 12,
 
   return(retval)
 }
+
+#' theme_fhi_shiny_kht
+#' @param base_size a
+#' @param base_family a
+#' @param base_line_size a
+#' @param base_rect_size a
+#' @param legend_position a
+#' @param panel_on_top a
+#' @param panel.grid.major.x Set to element_blank() to remove
+#' @param panel.grid.minor.x Set to element_blank() to remove
+#' @param panel.grid.major.y Set to element_blank() to remove
+#' @param panel.grid.minor.y Set to element_blank() to remove
+#' @export
+theme_fhi_shiny_kht <- function(base_size = 20,
+                                       base_family = "",
+                                       base_line_size = base_size / 22,
+                                       base_rect_size = base_size / 22,
+                                       legend_position = "right",
+                                       panel_on_top = TRUE,
+                                       panel.grid.major.x = element_blank(),
+                                       panel.grid.minor.x = element_blank(),
+                                       panel.grid.major.y = element_line(colour = "black", size = rel(0.1)),
+                                       panel.grid.minor.y = element_line(colour = "black", size = rel(0.05))) {
+  retval <- theme_fhi_lines_horizontal(
+    base_size = base_size,
+    base_family = base_family,
+    base_line_size = base_line_size,
+    base_rect_size = base_rect_size,
+    legend_position = legend_position,
+    panel_on_top = panel_on_top,
+    panel.grid.major.x = panel.grid.major.x,
+    panel.grid.minor.x = panel.grid.minor.x,
+    panel.grid.major.y = panel.grid.major.y,
+    panel.grid.minor.y = panel.grid.minor.y
+  ) %+replace%
+    theme(
+      title = element_text(size = base_size * 0.75),
+      complete = TRUE
+    )
+
+  return(retval)
+}
