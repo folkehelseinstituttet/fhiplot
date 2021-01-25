@@ -24,8 +24,11 @@ after_success:
   travis/drat.sh
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   travis/styler.sh
-
-# deploy:
-#   provider: script
-#   script: Rscript -e 'pkgdown::deploy_site_github()'
-#   skip_cleanup: true
+deploy:
+  provider: pages
+  skip-cleanup: true
+  github-token: "$GITHUB_PAT"
+  keep-history: true
+  local-dir: docs
+  on:
+    branch: master
