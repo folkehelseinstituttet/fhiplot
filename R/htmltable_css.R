@@ -21,9 +21,9 @@ htmltable_css_cell <- function(fontsize = 14, border_bottom = "1px dashed grey")
   retval <- glue::glue("padding-left: .4em; padding-right: .2em; padding-top: .4em; padding-bottom: .4em; font-size: {fontsize}px; border-bottom: {border_bottom};")
 }
 
-htmltable_css_cell_add_width <- function(css_cell, widths){
-  adding <- matrix(paste0("width: ",widths,"%;"),ncol=ncol(css_cell),nrow=nrow(css_cell),byrow = T)
-  for(i in 1:ncol(css_cell)) css_cell[,i] <- paste0(css_cell[,i], adding[,i])
+htmltable_css_cell_add_width <- function(css_cell, widths) {
+  adding <- matrix(paste0("width: ", widths, "%;"), ncol = ncol(css_cell), nrow = nrow(css_cell), byrow = T)
+  for (i in 1:ncol(css_cell)) css_cell[, i] <- paste0(css_cell[, i], adding[, i])
   return(css_cell)
 }
 
@@ -31,7 +31,7 @@ htmltable_css_cell_add_width <- function(css_cell, widths){
 #' @param tab tab
 #' @param widths Vector
 #' @export
-htmltable_quick_style <- function(tab, widths = rep(round(100/ncol(tab)), ncol(tab))){
+htmltable_quick_style <- function(tab, widths = rep(round(100 / ncol(tab)), ncol(tab))) {
   css_table <- htmltable_css_table()
   css_rgroup <- css_cgroup <- css_header <- htmltable_css_header()
   css_cell <- matrix(
