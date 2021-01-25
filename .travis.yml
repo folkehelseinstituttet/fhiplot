@@ -22,8 +22,8 @@ before_install:
 after_success:
 - test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
   travis/drat.sh
-- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && bash
-  travis/styler.sh
+- test $TRAVIS_PULL_REQUEST == "false" && test $TRAVIS_BRANCH == "master" && Rscript
+  -e 'devtools::install(); pkgdown::build_site()'
 deploy:
   provider: pages
   skip-cleanup: true
