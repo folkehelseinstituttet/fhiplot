@@ -1,14 +1,19 @@
 Package: fhiplot
-Title: Graphs For 'ggplot2' In The Style Of FHI 
+Title: Outputs In The Style Used By FHI.
 Version: 2021.1.22
 Authors@R: c(
-  person("Richard", "White", email = "w@rwhite.no", role = c("aut", "cre")),
+  person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"),
+    comment = c(ORCID = "0000-0002-6747-1726")
+  ),
   person("Gunnar", "Ro", email = "gunr@fhi.no", role = c("aut")),
-  person("Chi", "Zhang", email = "chi.zhang@medisin.uio.no", role = c("ctb"))
+  person("Chi", "Zhang", email = "andreachizhang@yahoo.com", role = c("aut"),
+    comment = c(ORCID = "0000-0003-0501-5909")
   )
-Description: A system to help you organize projects. Most analyses have three (or more) main sections: code, results, and data, each with different requirements (version control/sharing/encryption). You provide folder locations and 'org' helps you take care of the details.
+Description: Helpful functions for creating outputs in the style used by FHI.
 Depends: R (>= 3.3.0)
-License: GPL-3
+License: MIT
+URL: https://folkehelseinstituttet.github.io/fhiplot, https://github.com/folkehelseinstituttet/fhiplot
+BugReports: https://github.com/folkehelseinstituttet/fhiplot/issues
 Encoding: UTF-8
 LazyData: true
 Imports: ggplot2, 
@@ -16,7 +21,8 @@ Imports: ggplot2,
     stringr, 
     glue, 
     scales, 
-    huxtable
+    huxtable,
+    htmltable
 Suggests: testthat,
     knitr,
     rmarkdown,
