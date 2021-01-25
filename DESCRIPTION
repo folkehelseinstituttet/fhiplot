@@ -22,7 +22,7 @@ Imports: ggplot2,
     glue, 
     scales, 
     huxtable,
-    htmltable
+    htmlTable
 Suggests: testthat,
     knitr,
     rmarkdown,
