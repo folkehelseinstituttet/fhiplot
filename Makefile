@@ -13,7 +13,7 @@ all: check
 
 fix_description_date:
 	sed -i "s/^Version: .*/Version: $(DATE)/" DESCRIPTION
-	echo "Date/Publication: $(DATETIMEUTC) UTC" >> DESCRIPTION
+	sed -i "s+^Date/Publication.*+Date/Publication: $(DATETIMEUTC) UTC+" DESCRIPTION
 	cat DESCRIPTION
 
 install_deps:
