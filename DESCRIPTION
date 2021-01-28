@@ -34,4 +34,4 @@ Suggests: testthat,
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Additional_repositories: https://folkehelseinstituttet.github.io/drat/
-Date/Publication: 2021-01-28 06:39:47 UTC
+Date/Publication: 2021-01-28 12:39:47 UTC
