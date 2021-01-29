@@ -1,6 +1,6 @@
 Package: fhiplot
 Title: Outputs In The Style Used By FHI.
-Version: 2021.1.28
+Version: 2021.1.29
 Authors@R: c(
   person(c("Richard","Aubrey"), "White", email = "hello@rwhite.no", role = c("aut", "cre"),
     comment = c(ORCID = "0000-0002-6747-1726")
@@ -34,4 +34,4 @@ Suggests: testthat,
 RoxygenNote: 7.1.1
 VignetteBuilder: knitr
 Additional_repositories: https://folkehelseinstituttet.github.io/drat/
-Date/Publication: 2021-01-28 12:39:47 UTC
+Date/Publication: 2021-01-29 10:49:12 UTC
