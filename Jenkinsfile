@@ -65,13 +65,15 @@ pipeline {
       }
     }
     stage('pkgdown deploy') {
-      steps {
-        timeout(time: 2, unit: “HOURS”) {
-            input message: ‘Approve Deploy?’, ok: ‘Yes’
+        input {
+                message "Should we continue?"
+                ok "Yes, we should."
         }
-        sh """
-          make pkgdown_deploy
-        """
+        steps {
+          sh """
+            make pkgdown_deploy
+          """
+        }
       }
     }
     stage('Clean') {
