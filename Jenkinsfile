@@ -74,7 +74,6 @@ pipeline {
             make pkgdown_deploy
           """
         }
-      }
     }
     stage('Clean') {
       steps {
