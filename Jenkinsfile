@@ -66,6 +66,9 @@ pipeline {
     }
     stage('pkgdown deploy') {
       steps {
+        timeout(time: 2, unit: “HOURS”) {
+            input message: ‘Approve Deploy?’, ok: ‘Yes’
+        }
         sh """
           make pkgdown_deploy
         """
