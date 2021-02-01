@@ -65,10 +65,6 @@ pipeline {
       }
     }
     stage('pkgdown deploy') {
-        input {
-                message "Should we continue?"
-                ok "Yes, we should."
-        }
         steps {
           sh """
             make pkgdown_deploy
