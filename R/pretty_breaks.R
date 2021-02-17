@@ -14,6 +14,15 @@ format_date_nor <- function(x = lubridate::today(), format = "%d.%m.%Y") {
   return(retval)
 }
 
+#' format_date_nor
+#' @param x value
+#' @param format the desired format
+#' @export
+format_datetime_file <- function(x = lubridate::now(), format = "%Y-%m-%d_%H%M") {
+  retval <- format.Date(x, format = format)
+  return(retval)
+}
+
 #' format_nor
 #' @param x value
 #' @param digits Number of digits after the decimal place (required)
@@ -50,6 +59,27 @@ pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
   }
 }
 
+#' format_nor_0
+#' Formats as a norwegian number with 0 digits and puts a % sign afterwards.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_0 <- function(x) fhiplot::format_nor(x, digits = 0)
+
+#' format_nor_1
+#' Formats as a norwegian number with 1 digits and puts a % sign afterwards.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_1 <- function(x) fhiplot::format_nor(x, digits = 1)
+
+#' format_nor_2
+#' Formats as a norwegian number with 2 digits and puts a % sign afterwards.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_2 <- function(x) fhiplot::format_nor(x, digits = 2)
+
 #' format_nor_perc_0
 #' Formats as a norwegian number with 0 digits and puts a % sign afterwards.
 #' Useful for scale labels
@@ -63,3 +93,11 @@ format_nor_perc_0 <- function(x) paste0(fhiplot::format_nor(x, digits = 0), "%")
 #' @param x value
 #' @export
 format_nor_perc_1 <- function(x) paste0(fhiplot::format_nor(x, digits = 1), "%")
+
+#' format_nor_perc_2
+#' Formats as a norwegian number with 2 digits and puts a % sign afterwards.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_perc_2 <- function(x) paste0(fhiplot::format_nor(x, digits = 2), "%")
+
