@@ -28,6 +28,7 @@ Suggests: testthat,
     knitr,
     rmarkdown,
     fhidata,
+    fhimaps,
     lubridate,
     lemon,
     fhi
