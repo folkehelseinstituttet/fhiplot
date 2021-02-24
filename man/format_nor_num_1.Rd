@@ -3,7 +3,7 @@
 \name{format_nor_num_1}
 \alias{format_nor_num_1}
 \title{format_nor_num_1
-Formats as a norwegian number with 1 digits and puts a % sign afterwards.
+Formats as a norwegian number with 1 digits.
 Useful for scale labels}
 \usage{
 format_nor_num_1(x)
@@ -13,6 +13,6 @@ format_nor_num_1(x)
 }
 \description{
 format_nor_num_1
-Formats as a norwegian number with 1 digits and puts a % sign afterwards.
+Formats as a norwegian number with 1 digits.
 Useful for scale labels
 }
