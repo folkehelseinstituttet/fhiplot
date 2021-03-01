@@ -1,0 +1,141 @@
+# today to isoyear/week ====
+#' isoyear_c
+#' @param x The date of interest
+#' @export
+isoyear_c <- function(x = lubridate::today()) {
+  yr <- format.Date(x, "%G")
+  return(yr)
+}
+
+#' isoyear_n
+#' @param x The date of interest
+#' @export
+isoyear_n <- function(x = lubridate::today()) {
+  yr <- as.numeric(isoyear_c(x))
+  return(yr)
+}
+
+#' isoweek_c
+#' @param x The date of interest
+#' @export
+isoweek_c <- function(x = lubridate::today()) {
+  # wk <- data.table::isoweek(date)
+  # wk <- formatC(wk, flag = "0", width = 2)
+  wk <- format.Date(x, "%V")
+  return(wk)
+}
+
+#' isoweek_n
+#' @param x The date of interest
+#' @export
+isoweek_n <- function(x = lubridate::today()) {
+  wk <- as.numeric(isoweek_c(x))
+  return(wk)
+}
+
+
+
+
+
+
+# week to season/season to week -----
+#' week_to_seasonweek_n
+#' Natural week to season week. Season week 1 is natural week 30.
+#' @param week Natural week in a year
+#' @export
+week_to_seasonweek_n <- function(week){
+  # take both char/n in input
+
+  # real week 30 is the start of season, week 1
+  # original: fhi::x(20)
+  retval[week < 30] <- week[week < 30] + 23
+  retval[week == 53] <- 23.5
+  return(retval)
+}
+
+#' seasonweek_to_week_c
+#' Season week to natural week. Season week 1 is natural week 30.
+#' @param seasonweek Season week in a year
+#' @export
+seasonweek_to_week_c <- function(seasonweek){
+  # influenza week 1 (x) is real week 30
+
+  retval <- seasonweek
+  retval[seasonweek <= 23] <- seasonweek[seasonweek <= 23] + 29
+  retval[seasonweek > 23] <- seasonweek[seasonweek >23] - 23
+  retval[seasonweek == 23.5] <- 53
+  # return double digit: 01, 09, 10, 11
+  retval <- ifelse(retval<10, paste0("0", retval), as.character(retval))
+
+  return(retval)
+}
+
+#' seasonweek_to_week_n
+#' Season week to natural week. Season week 1 is natural week 30.
+#' @param seasonweek Season week in a year
+#' @export
+seasonweek_to_week_n <- function(seasonweek){
+  # influenza week 1 (x) is real week 30
+
+  retval <- seasonweek
+  retval[seasonweek <= 23] <- seasonweek[seasonweek <= 23] + 29
+  retval[seasonweek > 23] <- seasonweek[seasonweek >23] - 23
+  retval[seasonweek == 23.5] <- 53
+  return(retval)
+}
+
+
+
+
+
+
+# yrwk to year/week ====
+
+#' isoyearweek_to_year_n
+#' isoyearweek to year (numeric)
+#' This function breaks the string connected with '-' into year/week
+#' @param yrwk Year-week, e.g. "2020-19" for 19th week in 2020
+#' @export
+isoyearweek_to_year_n <- function(yrwk){
+  year_n <- stringr::str_split(yrwk, pattern = '-') %>%
+    purrr::map_chr(., function(x){x[1]}) %>% as.numeric()
+  return(year_n)
+}
+
+
+#' isoyearweek_to_year_c
+#' isoyearweek to year (character)
+#' This function breaks the string connected with '-' into year/week
+#' @param yrwk Year-week, e.g. "2020-19" for 19th week in 2020
+#' @export
+isoyearweek_to_year_c <- function(yrwk){
+  year_c <- stringr::str_split(yrwk, pattern = '-') %>%
+    purrr::map_chr(., function(x){x[1]})
+  return(year_c)
+}
+
+#' isoyearweek_to_week_n
+#' isoyearweek to week (numeric)
+#' This function breaks the string connected with '-' into year/week
+#' @param yrwk Year-week, e.g. "2020-19" for 19th week in 2020
+#' @export
+isoyearweek_to_week_n <- function(yrwk){
+  week_n <- stringr::str_split(yrwk, pattern = '-') %>%
+    purrr::map_chr(., function(x){x[2]}) %>% as.numeric()
+  return(week_n)
+}
+
+
+#' isoyearweek_to_week_c
+#' isoyearweek to week (character)
+#' This function breaks the string connected with '-' into year/week
+#' @param yrwk Year-week, e.g. "2020-19" for 19th week in 2020
+#' @export
+isoyearweek_to_week_c <- function(yrwk){
+  week_c <- stringr::str_split(yrwk, pattern = '-') %>%
+    purrr::map_chr(., function(x){x[2]})
+  return(week_c)
+}
+
+
+

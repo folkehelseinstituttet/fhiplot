@@ -121,35 +121,37 @@ format_nor_invlog2_1 <- function(x){format_nor_num_1(2^x)}
 format_nor_invlog2_2 <- function(x){format_nor_num_2(2^x)}
 
 
-
-
-#' week_to_x
-#' Natural week to influenza season week. Influenza week 1 is natural week 30.
-#' @param week Natural week in a year
+#' format_nor_invlog10_1
+#' Formats as a norwegian number with 1 digit on log-10 scale.
+#' Useful for scale labels
+#' @param x value
 #' @export
-week_to_x <- function(week){
-  # real week 30 is the start of influenza season, week 1
-  # original: fhi::x(20)
-  retval <- week
-  retval[week >= 30] <- week[week >= 30] - 29
-  retval[week < 30] <- week[week < 30] + 23
-  retval[week == 53] <- 23.5
-  return(retval)
-}
+format_nor_invlog10_1 <- function(x){format_nor_num_1(10^x)}
 
-#' x_to_week
-#' Influenza season week to natural week. Influenza week 1 is natural week 30.
-#' @param x Influenza week in a year
+
+#' format_nor_invlog10_2
+#' Formats as a norwegian number with 2 digits on log-10 scale.
+#' Useful for scale labels
+#' @param x value
 #' @export
-x_to_week <- function(x){
-  # influenza week 1 (x) is real week 30
-  retval <- x
-  retval[x <= 23] <- x[x <= 23] + 29
-  retval[x > 23] <- x[x >23] - 23
-  retval[x == 23.5] <- 53
-  return(retval)
-}
+format_nor_invlog10_2 <- function(x){format_nor_num_2(10^x)}
 
+
+#' format_nor_invloge_1
+#' Formats as a norwegian number with 1 digit on log scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invloge_1 <- function(x){format_nor_num_1(exp(x))}
+
+
+
+#' format_nor_invloge_2
+#' Formats as a norwegian number with 2 digits on log scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invloge_2 <- function(x){format_nor_num_2(exp(x))}
 
 
 
