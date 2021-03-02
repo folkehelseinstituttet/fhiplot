@@ -21,18 +21,6 @@ knitr::opts_chunk$set(
 )
 ```
 
-## Checklist
-
-- Make sure that your dataset contains all days/weeks (i.e. there can be days/weeks with 0 cases)
-- Use `q <- q + fhiplot::theme_fhi_lines_horizontal()`
-- Use `q <- q + geom_col(fill = fhiplot::base_color, width = 0.8)`
-- For `scale_y_continuous` use `breaks = fhiplot::pretty_breaks(5)`
-- For `scale_y_continuous` use `expand = expansion(mult = c(0, 0.1))`
-- If the x-axis is too cramped, make the labels vertical `q <- q + fhiplot::set_x_axis_vertical()`
-- Say when your data was extracted `q <- q + labs(caption = "Data extracted on 2018-02-20")`
-
-If multiple geographical areas:
-- Use `q <- q + lemon::facet_rep_wrap(~location_code, repeat.tick.labels = "y")`
 
 ```{r}
 library(ggplot2)

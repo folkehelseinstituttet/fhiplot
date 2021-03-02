@@ -60,21 +60,22 @@ pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
 }
 
 #' format_nor_num_0
-#' Formats as a norwegian number with 0 digits and puts a % sign afterwards.
+#' Formats as a norwegian number with 0 digits.
 #' Useful for scale labels
 #' @param x value
 #' @export
 format_nor_num_0 <- function(x) fhiplot::format_nor(x, digits = 0)
 
+
 #' format_nor_num_1
-#' Formats as a norwegian number with 1 digits and puts a % sign afterwards.
+#' Formats as a norwegian number with 1 digits.
 #' Useful for scale labels
 #' @param x value
 #' @export
 format_nor_num_1 <- function(x) fhiplot::format_nor(x, digits = 1)
 
 #' format_nor_num_2
-#' Formats as a norwegian number with 2 digits and puts a % sign afterwards.
+#' Formats as a norwegian number with 2 digits.
 #' Useful for scale labels
 #' @param x value
 #' @export
@@ -100,4 +101,60 @@ format_nor_perc_1 <- function(x) paste0(fhiplot::format_nor(x, digits = 1), "%")
 #' @param x value
 #' @export
 format_nor_perc_2 <- function(x) paste0(fhiplot::format_nor(x, digits = 2), "%")
+
+
+
+
+#' format_nor_invlog2_1
+#' Formats as a norwegian number with 1 digit on log-2 scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invlog2_1 <- function(x){format_nor_num_1(2^x)}
+
+
+#' format_nor_invlog2_2
+#' Formats as a norwegian number with 2 digits on log-2 scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invlog2_2 <- function(x){format_nor_num_2(2^x)}
+
+
+#' format_nor_invlog10_1
+#' Formats as a norwegian number with 1 digit on log-10 scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invlog10_1 <- function(x){format_nor_num_1(10^x)}
+
+
+#' format_nor_invlog10_2
+#' Formats as a norwegian number with 2 digits on log-10 scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invlog10_2 <- function(x){format_nor_num_2(10^x)}
+
+
+#' format_nor_invloge_1
+#' Formats as a norwegian number with 1 digit on log scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invloge_1 <- function(x){format_nor_num_1(exp(x))}
+
+
+
+#' format_nor_invloge_2
+#' Formats as a norwegian number with 2 digits on log scale.
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_invloge_2 <- function(x){format_nor_num_2(exp(x))}
+
+
+
+
+
 

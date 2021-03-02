@@ -1,6 +1,6 @@
 ---
 title: "Palettes"
-author: "Author"
+author: "Richard White"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:

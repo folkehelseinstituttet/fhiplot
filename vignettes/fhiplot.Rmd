@@ -1,6 +1,6 @@
 ---
 title: "Introduction to fhiplot"
-author: "Richard"
+author: "Richard White, Chi Zhang"
 date: "`r Sys.Date()`"
 output:
   rmarkdown::html_vignette:
