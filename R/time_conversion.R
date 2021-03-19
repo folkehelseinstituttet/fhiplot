@@ -33,6 +33,13 @@ isoweek_n <- function(x = lubridate::today()) {
   return(wk)
 }
 
+#' isoyearweek_c
+#' date to isoyearweek_c (character)
+#' @param x Date
+#' @export
+isoyearweek_c <- function(x = lubridate::today()){
+  return(paste0(isoyear_c(x),"-",isoweek_c(x)))
+}
 
 
 
@@ -65,7 +72,7 @@ seasonweek_to_week_c <- function(seasonweek){
   retval[seasonweek > 23] <- seasonweek[seasonweek >23] - 23
   retval[seasonweek == 23.5] <- 53
   # return double digit: 01, 09, 10, 11
-  retval <- ifelse(retval<10, paste0("0", retval), as.character(retval))
+  retval <- formatC(retval, width=2, flag="0")
 
   return(retval)
 }
@@ -83,7 +90,6 @@ seasonweek_to_week_n <- function(seasonweek){
   retval[seasonweek == 23.5] <- 53
   return(retval)
 }
-
 
 
 
@@ -135,6 +141,73 @@ isoyearweek_to_week_c <- function(yrwk){
   week_c <- stringr::str_split(yrwk, pattern = '-') %>%
     purrr::map_chr(., function(x){x[2]})
   return(week_c)
+}
+
+
+#' Keeps sundays and latest date
+#' If you provide a vector of dates, this function will keep the sundays
+#' and the latest date
+#' @param dates Vector of dates
+#' @param format Choose between: "isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c"
+#' @examples
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c"
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c"
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c-1/isoyearweek_c"
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c-1/isoweek_c"
+#' )
+#' @export
+keep_sundays_and_latest_date <- function(dates, format = "Uke isoweek_c-1/isoweek_c"){
+  stopifnot(format %in% c("isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c"))
+  values <- data.table(
+    date = dates,
+    order = 1:length(dates),
+    isoyearweek = isoyearweek_c(dates)
+  )
+  setorder(values, -date)
+  values[, n := 1:.N, by=.(isoyearweek)]
+  setorder(values, date)
+  values[, time_description := as.character(date)]
+  if(format == "isoyearweek_c"){
+    values[
+      date %in% fhidata::world_dates_isoyearweek$sun,
+      time_description := paste0(isoyearweek_c(date))
+    ]
+  } else if(format == "Uke isoweek_c"){
+    values[
+      date %in% fhidata::world_dates_isoyearweek$sun,
+      time_description := paste0("Uke ",isoweek_c(date))
+    ]
+  } else if(format == "isoyearweek_c-1/isoyearweek_c"){
+    values[
+      date %in% fhidata::world_dates_isoyearweek$sun,
+      time_description := paste0(isoyearweek_c(date-7), "/", isoyearweek_c(date))
+    ]
+  } else if(format == "Uke isoweek_c-1/isoweek_c"){
+    values[
+      date %in% fhidata::world_dates_isoyearweek$sun,
+      time_description := paste0("Uke ",isoweek_c(date-7),"/", isoweek_c(date))
+    ]
+  }
+  values[n!=1, time_description := "delete"]
+  levels <- unique(c("delete", values$time_description))
+  setorder(values, order)
+
+  retval <- factor(values$time_description, levels = levels)
+  return(retval)
 }
 
 
