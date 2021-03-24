@@ -28,7 +28,7 @@ library(fhiplot)
 
 ## Palette
 
-```{r}
+```{r fig.height=9}
 fhiplot::display_all_palettes()
 ```
 

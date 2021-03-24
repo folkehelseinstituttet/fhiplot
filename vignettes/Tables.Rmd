@@ -189,7 +189,7 @@ openxlsx::addStyle(
 # these are just shortcuts for
 # fhiplot::excel_style_risk_1_5(3, palette = "red")
 # fhiplot::excel_style_risk_1_5(5, palette = "red")
-rows <- 1 + which(nrow > 4)
+rows <- 1 + which(data[[3]] > 4)
 if(length(rows) > 0) openxlsx::addStyle(
   wb,
   sheet = "data",
