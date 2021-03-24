@@ -35,12 +35,12 @@ d_formatted <- copy(data)
 css_style_matrix <- fhiplot::htmltable_css_style_matrix(d_value)
 
 # set some of the third column to have a red background
-rows <- which(d_value[[3]] >= 4)
+rows <- which(d_value[[3]] > 4)
 if(length(rows) > 0) css_style_matrix[rows,3] <- fhiplot::htmltable_css_background_red
 
 # set some of the fourth column to have a blue background according to risk level
 # risk level 1
-rows <- 1:ncol(d_value)
+rows <- 1:nrow(d_value)
 if(length(rows) > 0) css_style_matrix[rows,4] <- fhiplot::htmltable_css_risk_1_5(1, palette = "blue")
 
 # risk level 3
@@ -53,7 +53,7 @@ if(length(rows) > 0) css_style_matrix[rows,4] <- fhiplot::htmltable_css_risk_1_5
 
 # set some of the fifth column to have a red background according to risk level
 # risk level 1
-rows <- 1:ncol(d_value)
+rows <- 1:nrow(d_value)
 if(length(rows) > 0) css_style_matrix[rows,5] <- fhiplot::htmltable_css_risk_1_5(1, palette = "red")
 
 # risk level 2
@@ -189,7 +189,7 @@ openxlsx::addStyle(
 # these are just shortcuts for
 # fhiplot::excel_style_risk_1_5(3, palette = "red")
 # fhiplot::excel_style_risk_1_5(5, palette = "red")
-rows <- 1 + which(data[[3]] > 4)
+rows <- 1 + which(nrow > 4)
 if(length(rows) > 0) openxlsx::addStyle(
   wb,
   sheet = "data",
