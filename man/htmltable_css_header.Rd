@@ -4,10 +4,10 @@
 \alias{htmltable_css_header}
 \title{CSS for htmltable header}
 \usage{
-htmltable_css_header(fontsize = 16, border_top = "2px solid grey")
+htmltable_css_header(font_size = 16, border_top = "2px solid grey")
 }
 \arguments{
-\item{fontsize}{fontsize}
+\item{font_size}{font_size}
 
 \item{border_top}{Border top style}
 }

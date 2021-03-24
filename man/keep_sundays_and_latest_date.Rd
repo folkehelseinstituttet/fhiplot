@@ -18,3 +18,24 @@ Keeps sundays and latest date
 If you provide a vector of dates, this function will keep the sundays
 and the latest date
 }
+\examples{
+fhiplot::keep_sundays_and_latest_date(
+  dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+  format = "isoyearweek_c"
+)
+
+fhiplot::keep_sundays_and_latest_date(
+  dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+  format = "Uke isoweek_c"
+)
+
+fhiplot::keep_sundays_and_latest_date(
+  dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+  format = "isoyearweek_c-1/isoyearweek_c"
+)
+
+fhiplot::keep_sundays_and_latest_date(
+  dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+  format = "Uke isoweek_c-1/isoweek_c"
+)
+}

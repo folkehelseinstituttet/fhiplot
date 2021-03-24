@@ -4,14 +4,16 @@
 \alias{htmltable_css_risk_1_5}
 \title{CSS for htmltable cell with a risk scale from 1-5}
 \usage{
-htmltable_css_risk_1_5(x, fontsize = 14, max_risk_value = 5)
+htmltable_css_risk_1_5(x, font_size = 14, max_risk_value = 5, palette = "blue")
 }
 \arguments{
 \item{x}{Risk value}
 
-\item{fontsize}{fontsize}
+\item{font_size}{font_size}
 
 \item{max_risk_value}{Max risk value}
+
+\item{palette}{blue/red}
 }
 \description{
 CSS for htmltable cell with a risk scale from 1-5

@@ -4,10 +4,10 @@
 \alias{htmltable_css_cell}
 \title{CSS for htmltable cell}
 \usage{
-htmltable_css_cell(fontsize = 14, border_bottom = "1px dashed grey")
+htmltable_css_cell(font_size = 14, border_bottom = "1px dashed grey")
 }
 \arguments{
-\item{fontsize}{fontsize}
+\item{font_size}{font_size}
 
 \item{border_bottom}{Border bottom style}
 }

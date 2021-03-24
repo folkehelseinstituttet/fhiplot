@@ -93,6 +93,12 @@ vals$pals$map_seq_complete_3 <- colors$v2$map_sequential[c(1, 3, 4)]
 vals$pals$map_seq_complete_4 <- colors$v2$map_sequential[c(1, 2, 3, 4)]
 vals$pals$map_seq_complete_5 <- colors$v2$map_sequential[c(1, 2, 3, 4, 5)]
 
+vals$pals$blue_1 <- rev(vals$pals$map_seq_complete_1)
+vals$pals$blue_2 <- rev(vals$pals$map_seq_complete_2)
+vals$pals$blue_3 <- rev(vals$pals$map_seq_complete_3)
+vals$pals$blue_4 <- rev(vals$pals$map_seq_complete_4)
+vals$pals$blue_5 <- rev(vals$pals$map_seq_complete_5)
+
 vals$pals$map_seq_missing_1 <- colors$v2$primary["H7"]
 vals$pals$map_seq_missing_2 <- c(colors$v2$map_sequential[1], colors$v2$primary["H7"])
 vals$pals$map_seq_missing_3 <- c(colors$v2$map_sequential[c(1, 4)], colors$v2$primary["H7"])
@@ -303,6 +309,36 @@ vals$pals$contrast_7 <- c(
   colors$v2$primary["H5"]
 )
 
+vals$pals$red_1 <- c(
+  colors$v2$neutral["S3"]
+)
+
+vals$pals$red_2 <- c(
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H5"]
+)
+
+vals$pals$red_3 <- c(
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H5"]
+)
+
+vals$pals$red_4 <- c(
+  colors$v2$neutral["S3"],
+  colors$v2$primary["H7"],
+  colors$v2$primary["H6"],
+  colors$v2$primary["H5"]
+)
+
+vals$pals$red_5 <- c(
+  colors$v2$neutral["S3"],
+  "#fef0d9",
+  colors$v2$primary["H7"],
+  colors$v2$primary["H6"],
+  colors$v2$primary["H5"]
+)
+
 vals$pals$combination_1 <- c(
   colors$v1$primary["B2"]
 )
@@ -330,16 +366,18 @@ vals$pals$combination_5 <- c(
 )
 
 vals$palettes <- c(
+  "combination",
+  "map_div_complete",
+  "map_div_missing",
   "map_seq_x2_missing_x2",
   "map_seq_x2_missing",
   "map_seq_x2_complete",
   "map_seq_missing_x3",
   "map_seq_missing_x2",
-  "map_seq_complete",
   "map_seq_missing",
-  "map_div_complete",
-  "map_div_missing",
-  "combination",
+  "map_seq_complete",
+  "blue",
+  "red",
   "contrast",
   "posneg",
   "warning",
