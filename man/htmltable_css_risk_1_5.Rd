@@ -13,7 +13,7 @@ htmltable_css_risk_1_5(x, font_size = 14, max_risk_value = 5, palette = "blue")
 
 \item{max_risk_value}{Max risk value}
 
-\item{palette}{blue/red}
+\item{palette}{blue/red/green}
 }
 \description{
 CSS for htmltable cell with a risk scale from 1-5

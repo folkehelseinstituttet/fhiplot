@@ -21,11 +21,11 @@ excel_style_prop_to_perc_1 <- openxlsx::createStyle(numFmt="0.0%")
 #' Excel style for htmltable cell with a risk scale from 1-5
 #' @param x Risk value
 #' @param max_risk_value Max risk value
-#' @param palette blue/red
+#' @param palette blue/red/green
 #' @export
 excel_style_risk_1_5 <- function(x, max_risk_value = 5, palette = "blue") {
   stopifnot(x %in% 1:5)
-  stopifnot(palette %in% c("blue", "red"))
+  stopifnot(palette %in% c("blue", "red", "green"))
   color <- fhi_pal(palette, direction = 1)(max_risk_value)[x]
   if (x >= 4){
     retval <- openxlsx::createStyle(fgFill = color, fontColour = "white")
