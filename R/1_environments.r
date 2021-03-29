@@ -109,11 +109,17 @@ vals$pals$map_seq_complete_3 <- colors$v2$map_sequential[c(1, 3, 4)]
 vals$pals$map_seq_complete_4 <- colors$v2$map_sequential[c(1, 2, 3, 4)]
 vals$pals$map_seq_complete_5 <- colors$v2$map_sequential[c(1, 2, 3, 4, 5)]
 
-vals$pals$blue_1 <- rev(vals$pals$map_seq_complete_1)
-vals$pals$blue_2 <- rev(vals$pals$map_seq_complete_2)
-vals$pals$blue_3 <- rev(vals$pals$map_seq_complete_3)
-vals$pals$blue_4 <- rev(vals$pals$map_seq_complete_4)
-vals$pals$blue_5 <- rev(vals$pals$map_seq_complete_5)
+vals$pals$blue_1 <- rev(colors$v2$map_sequential)[1]
+vals$pals$blue_2 <- rev(colors$v2$map_sequential)[c(1, 4)]
+vals$pals$blue_3 <- rev(colors$v2$map_sequential)[c(1, 3, 4)]
+vals$pals$blue_4 <- rev(colors$v2$map_sequential)[c(1, 2, 3, 4)]
+vals$pals$blue_5 <- rev(colors$v2$map_sequential)[c(1, 2, 3, 4, 5)]
+
+vals$pals$grayblue_1 <- colors$v2$neutral["S3"]
+vals$pals$grayblue_2 <- c(colors$v2$neutral["S3"], rev(colors$v2$map_sequential)[c(4)])
+vals$pals$grayblue_3 <- c(colors$v2$neutral["S3"], rev(colors$v2$map_sequential)[c(3, 4)])
+vals$pals$grayblue_4 <- c(colors$v2$neutral["S3"], rev(colors$v2$map_sequential)[c(2, 3, 4)])
+vals$pals$grayblue_5 <- c(colors$v2$neutral["S3"], rev(colors$v2$map_sequential)[c(2, 3, 4, 5)])
 
 vals$pals$red_1 <- colors$v2$red[1]
 vals$pals$red_2 <- colors$v2$red[c(1, 4)]
@@ -121,11 +127,23 @@ vals$pals$red_3 <- colors$v2$red[c(1, 3, 4)]
 vals$pals$red_4 <- colors$v2$red[c(1, 2, 3, 4)]
 vals$pals$red_5 <- colors$v2$red[c(1, 2, 3, 4, 5)]
 
+vals$pals$grayred_1 <- c(colors$v2$neutral["S3"])
+vals$pals$grayred_2 <- c(colors$v2$neutral["S3"], colors$v2$red[c(4)])
+vals$pals$grayred_3 <- c(colors$v2$neutral["S3"], colors$v2$red[c(3, 4)])
+vals$pals$grayred_4 <- c(colors$v2$neutral["S3"], colors$v2$red[c(2, 3, 4)])
+vals$pals$grayred_5 <- c(colors$v2$neutral["S3"], colors$v2$red[c(2, 3, 4, 5)])
+
 vals$pals$green_1 <- colors$v2$green[1]
 vals$pals$green_2 <- colors$v2$green[c(1, 4)]
 vals$pals$green_3 <- colors$v2$green[c(1, 3, 4)]
 vals$pals$green_4 <- colors$v2$green[c(1, 2, 3, 4)]
 vals$pals$green_5 <- colors$v2$green[c(1, 2, 3, 4, 5)]
+
+vals$pals$graygreen_1 <- c(colors$v2$neutral["S3"])
+vals$pals$graygreen_2 <- c(colors$v2$neutral["S3"], colors$v2$green[c(4)])
+vals$pals$graygreen_3 <- c(colors$v2$neutral["S3"], colors$v2$green[c(3, 4)])
+vals$pals$graygreen_4 <- c(colors$v2$neutral["S3"], colors$v2$green[c(2, 3, 4)])
+vals$pals$graygreen_5 <- c(colors$v2$neutral["S3"], colors$v2$green[c(2, 3, 4, 5)])
 
 vals$pals$map_seq_missing_1 <- colors$v2$primary["H7"]
 vals$pals$map_seq_missing_2 <- c(colors$v2$map_sequential[1], colors$v2$primary["H7"])
@@ -374,6 +392,9 @@ vals$palettes <- c(
   "map_seq_missing_x2",
   "map_seq_missing",
   "map_seq_complete",
+  "grayblue",
+  "grayred",
+  "graygreen",
   "blue",
   "red",
   "green",

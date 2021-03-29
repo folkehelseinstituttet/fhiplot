@@ -73,11 +73,11 @@ htmltable_quick_style <- function(tab, widths = rep(round(100 / ncol(tab)), ncol
 #' @param x Risk value
 #' @param font_size font_size
 #' @param max_risk_value Max risk value
-#' @param palette blue/red/green
+#' @param palette blue/red/green/grayblue/grayred/graygreen
 #' @export
 htmltable_css_risk_1_5 <- function(x, font_size = 14, max_risk_value = 5, palette = "blue") {
   stopifnot(x %in% 1:5)
-  stopifnot(palette %in% c("blue", "red", "red"))
+  stopifnot(palette %in% c("blue", "red", "red", "grayblue", "grayred", "grayred"))
   color <- fhi_pal(palette, direction = 1)(max_risk_value)[x]
   retval <- htmltable_css_cell(font_size = font_size)
   retval <- glue::glue("{retval} background-color: {color};")

@@ -11,7 +11,7 @@ excel_style_risk_1_5(x, max_risk_value = 5, palette = "blue")
 
 \item{max_risk_value}{Max risk value}
 
-\item{palette}{blue/red/green}
+\item{palette}{blue/red/green/grayblue/grayred/graygreen}
 }
 \description{
 Excel style for htmltable cell with a risk scale from 1-5
