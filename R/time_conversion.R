@@ -143,35 +143,8 @@ isoyearweek_to_week_c <- function(yrwk){
   return(week_c)
 }
 
-
-#' Keeps sundays and latest date
-#' If you provide a vector of dates, this function will keep the sundays
-#' and the latest date
-#' @param dates Vector of dates
-#' @param format Choose between: "isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c"
-#' @examples
-#' fhiplot::keep_sundays_and_latest_date(
-#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
-#'   format = "isoyearweek_c"
-#' )
-#'
-#' fhiplot::keep_sundays_and_latest_date(
-#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
-#'   format = "Uke isoweek_c"
-#' )
-#'
-#' fhiplot::keep_sundays_and_latest_date(
-#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
-#'   format = "isoyearweek_c-1/isoyearweek_c"
-#' )
-#'
-#' fhiplot::keep_sundays_and_latest_date(
-#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
-#'   format = "Uke isoweek_c-1/isoweek_c"
-#' )
-#' @export
-keep_sundays_and_latest_date <- function(dates, format = "Uke isoweek_c-1/isoweek_c"){
-  stopifnot(format %in% c("isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c"))
+keep_sundays_and_latest_date_internal <- function(dates, format = "Uke isoweek_c-1/isoweek_c", keep_delete = TRUE, keep_latest_date = TRUE){
+  stopifnot(format %in% c("isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c", "date"))
   values <- data.table(
     date = dates,
     order = 1:length(dates),
@@ -181,6 +154,11 @@ keep_sundays_and_latest_date <- function(dates, format = "Uke isoweek_c-1/isowee
   values[, n := 1:.N, by=.(isoyearweek)]
   setorder(values, date)
   values[, time_description := as.character(date)]
+  if(keep_latest_date){
+    values[time_description != max(time_description), time_description := "delete"]
+  } else {
+    values[, time_description := "delete"]
+  }
   if(format == "isoyearweek_c"){
     values[
       date %in% fhidata::world_dates_isoyearweek$sun,
@@ -201,12 +179,127 @@ keep_sundays_and_latest_date <- function(dates, format = "Uke isoweek_c-1/isowee
       date %in% fhidata::world_dates_isoyearweek$sun,
       time_description := paste0("Uke ",isoweek_c(date-7),"/", isoweek_c(date))
     ]
+  } else if(format == "date"){
+    values[
+      date %in% fhidata::world_dates_isoyearweek$sun,
+      time_description := as.character(date)
+    ]
   }
-  values[n!=1, time_description := "delete"]
   levels <- unique(c("delete", values$time_description))
   setorder(values, order)
 
   retval <- factor(values$time_description, levels = levels)
+
+  if(!keep_delete){
+    retval <- as.character(retval)
+    retval <- retval[retval!="delete"]
+  }
+  return(retval)
+}
+
+#' Keeps sundays and latest date
+#' If you provide a vector of dates, this function will keep the sundays
+#' and the latest date
+#' @param dates Vector of dates
+#' @param format Choose between: "isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c", "date"
+#' @param keep_delete Keep everything in the same format as provided
+#' @examples
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c-1/isoyearweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c-1/isoweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "date",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays_and_latest_date(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "date",
+#'   keep_delete = FALSE
+#' )
+#' @export
+keep_sundays_and_latest_date <- function(dates, format = "Uke isoweek_c-1/isoweek_c", keep_delete = TRUE){
+  retval <- keep_sundays_and_latest_date_internal(
+    dates = dates,
+    format = format,
+    keep_delete = keep_delete,
+    keep_latest_date = TRUE
+  )
+  return(retval)
+}
+
+#' Keeps sundays
+#' If you provide a vector of dates, this function will keep the sundays
+#' and the latest date
+#' @param dates Vector of dates
+#' @param format Choose between: "isoyearweek_c", "Uke isoweek_c", "isoyearweek_c-1/isoyearweek_c", "Uke isoweek_c-1/isoweek_c", "date"
+#' @param keep_delete Keep everything in the same format as provided
+#' @examples
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "isoyearweek_c-1/isoyearweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "Uke isoweek_c-1/isoweek_c",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "date",
+#'   keep_delete = TRUE
+#' )
+#'
+#' fhiplot::keep_sundays(
+#'   dates = seq.Date(as.Date("2020-01-01"), as.Date("2020-02-01"), by=1),
+#'   format = "date",
+#'   keep_delete = FALSE
+#' )
+#' @export
+keep_sundays <- function(dates, format = "Uke isoweek_c-1/isoweek_c", keep_delete = TRUE){
+  retval <- keep_sundays_and_latest_date_internal(
+    dates = dates,
+    format = format,
+    keep_delete = keep_delete,
+    keep_latest_date = FALSE
+  )
   return(retval)
 }
 

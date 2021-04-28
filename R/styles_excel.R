@@ -2,6 +2,10 @@
 #' @export
 excel_style_title <- openxlsx::createStyle(fontSize = 14, textDecoration = "bold")
 
+#' Excel style wrap
+#' @export
+excel_style_wrap <- openxlsx::createStyle(wrapText = TRUE, valign = "top")
+
 #' Excel style for number with 0 decimal places
 #' @export
 excel_style_num_0 <- openxlsx::createStyle(numFmt="0")
