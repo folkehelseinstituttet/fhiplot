@@ -16,6 +16,7 @@ URL: https://folkehelseinstituttet.github.io/fhiplot, https://github.com/folkehe
 BugReports: https://github.com/folkehelseinstituttet/fhiplot/issues
 Encoding: UTF-8
 LazyData: true
+LazyDataCompression: xz
 Imports: data.table,
     ggplot2, 
     glue, 
