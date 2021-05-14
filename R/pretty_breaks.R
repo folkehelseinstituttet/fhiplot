@@ -70,7 +70,6 @@ pretty_breaks <- function(n = 5, digits = 0, break_with_four_digits = T, ...) {
 #' @export
 format_nor_num_0 <- function(x) fhiplot::format_nor(x, digits = 0)
 
-
 #' format_nor_num_1
 #' Formats as a norwegian number with 1 digits.
 #' Useful for scale labels
@@ -84,6 +83,40 @@ format_nor_num_1 <- function(x) fhiplot::format_nor(x, digits = 1)
 #' @param x value
 #' @export
 format_nor_num_2 <- function(x) fhiplot::format_nor(x, digits = 2)
+
+
+#' format_nor_num_0
+#' Formats as a norwegian number with 0 digits and the suffix " /100k".
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_per100k_0 <- function(x){
+  retval <- paste0(fhiplot::format_nor(x, digits = 0), " /100k")
+  retval[retval=="IK /100k"] <- "IK"
+  return(retval)
+}
+
+#' format_nor_num_1
+#' Formats as a norwegian number with 1 digits and the suffix " /100k"
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_per100k_1 <- function(x){
+  retval <- paste0(fhiplot::format_nor(x, digits = 1), " /100k")
+  retval[retval=="IK /100k"] <- "IK"
+  return(retval)
+}
+
+#' format_nor_num_2
+#' Formats as a norwegian number with 2 digits and the suffix " /100k"
+#' Useful for scale labels
+#' @param x value
+#' @export
+format_nor_per100k_2 <- function(x){
+  retval <- paste0(fhiplot::format_nor(x, digits = 2), " /100k")
+  retval[retval=="IK /100k"] <- "IK"
+  return(retval)
+}
 
 #' format_nor_perc_0
 #' Formats as a norwegian number with 0 digits and puts a % sign afterwards.
