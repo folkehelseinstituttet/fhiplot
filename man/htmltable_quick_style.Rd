@@ -8,6 +8,7 @@ htmltable_quick_style(
   tab,
   widths = rep(round(100/ncol(tab)), ncol(tab)),
   css_style_matrix = NULL,
+  n_cgroup = 1,
   font_size_cell = 14,
   font_size_header = 16
 )
@@ -18,6 +19,8 @@ htmltable_quick_style(
 \item{widths}{Vector}
 
 \item{css_style_matrix}{matrix containing css styles of the same dimensions as tab}
+
+\item{n_cgroup}{The number of cgroups that are in your table}
 
 \item{font_size_cell}{font size cell}
 

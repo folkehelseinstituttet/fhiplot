@@ -39,13 +39,22 @@ htmltable_css_style_matrix <- function(tab){
 #' @param tab tab
 #' @param widths Vector
 #' @param css_style_matrix matrix containing css styles of the same dimensions as tab
+#' @param n_cgroup The number of cgroups that are in your table
 #' @param font_size_cell font size cell
 #' @param font_size_header font size header
 #' @export
-htmltable_quick_style <- function(tab, widths = rep(round(100 / ncol(tab)), ncol(tab)), css_style_matrix = NULL, font_size_cell = 14, font_size_header = 16) {
+htmltable_quick_style <- function(
+  tab,
+  widths = rep(round(100 / ncol(tab)), ncol(tab)),
+  css_style_matrix = NULL,
+  n_cgroup = 1,
+  font_size_cell = 14,
+  font_size_header = 16
+  ) {
   if(!is.null(css_style_matrix)) stopifnot(identical(dim(tab), dim(css_style_matrix)))
   css_table <- htmltable_css_table()
-  css_rgroup <- css_cgroup <- css_header <- htmltable_css_header(font_size = font_size_header)
+  css_rgroup <- css_header <- htmltable_css_header(font_size = font_size_header)
+  css_cgroup <- rep(htmltable_css_header(font_size = font_size_header), n_cgroup)
   css_cell <- matrix(
     htmltable_css_cell(font_size = font_size_cell),
     nrow = nrow(tab),
