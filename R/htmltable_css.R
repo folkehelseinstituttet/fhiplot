@@ -1,7 +1,7 @@
 #' CSS for htmltable table
 #' @export
 htmltable_css_table <- function() {
-  "width: 100%; border-collapse: revert;"
+  "width: 100%; border-collapse: separate;"
 }
 
 #' CSS for htmltable header
