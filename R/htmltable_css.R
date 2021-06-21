@@ -1,7 +1,7 @@
 #' CSS for htmltable table
 #' @export
 htmltable_css_table <- function() {
-  "width: 100%; border-collapse: inherit;"
+  "width: 100%; border-collapse: revert;"
 }
 
 #' CSS for htmltable header
