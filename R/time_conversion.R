@@ -56,8 +56,10 @@ week_to_seasonweek_n <- function(week){
   # real week 30 is the start of season, week 1
   # original: fhi::x(20)
   retval <- week
+  retval[week >= 30] <- week[week >= 30] - 29
   retval[week < 30] <- week[week < 30] + 23
   retval[week == 53] <- 23.5
+
   return(retval)
 }
 
