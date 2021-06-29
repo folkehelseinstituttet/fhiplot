@@ -1,0 +1,14 @@
+pandoc: '2.13'
+pkgdown: 1.6.1
+pkgdown_sha: ~
+articles:
+  Tables: Tables.html
+  epicurves: epicurves.html
+  fhiplot: fhiplot.html
+  maps: maps.html
+  palettes: palettes.html
+  scaling: scaling.html
+  themes: themes.html
+  time_conversion: time_conversion.html
+last_built: 2021-06-29T06:07Z
+
